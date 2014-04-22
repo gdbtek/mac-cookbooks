@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function header
+function header()
 {
     echo -e "\n\033[1;33m>>>>>>>>>> \033[1;4;35m${1}\033[0m \033[1;33m<<<<<<<<<<\033[0m\n"
 }
