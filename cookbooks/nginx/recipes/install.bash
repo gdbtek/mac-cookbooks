@@ -4,7 +4,7 @@ function install()
 {
     # Clean Up
 
-    rm -rf "${installFolder}"
+    sudo rm -rf "${installFolder}"
     mkdir -p "${installFolder}"
 
     # Download PCRE
