@@ -66,7 +66,8 @@ function unzipRemoteFile()
 
     local extension="$(getFileExtension "${downloadURL}")"
 
-    if [[ "$(echo "${extension}" | grep -i 'tgz')" != '' || "$(echo "${downloadURL}" | grep -io ".tar.gz$")" != '' ]]
+    if [[ "$(echo "${extension}" | grep -i 'tgz')" != '' ||
+          "$(echo "${downloadURL}" | grep -io ".tar.gz$")" != '' ]]
     then
         curl -L "${downloadURL}" | tar xz --strip 1 -C "${installFolder}"
     elif [[ "$(echo "${extension}" | grep -i 'zip')" != '' ]]
