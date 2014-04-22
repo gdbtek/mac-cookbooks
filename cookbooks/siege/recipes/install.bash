@@ -12,10 +12,11 @@ function install()
     local currentPath="$(pwd)"
     local tempFolder="$(getTemporaryFolder)"
 
-    git clone "${downloadURL}" "${tempFolder}"
+    unzipRemoteFile "${downloadURL}" "${tempFolder}"
     cd "${tempFolder}"
+    "${tempFolder}/configure" --prefix="${installFolder}"
     make
-    find "${tempFolder}" -type f -maxdepth 1 -perm -u+x -exec cp -f {} "${installFolder}" \;
+    make install
     rm -rf "${tempFolder}"
     cd "${currentPath}"
 }
@@ -27,7 +28,7 @@ function main()
     source "${appPath}/../../../lib/util.bash" || exit 1
     source "${appPath}/../attributes/default.bash" || exit 1
 
-    header 'INSTALLING WRK'
+    header 'INSTALLING SIEGE'
 
     install
 }
