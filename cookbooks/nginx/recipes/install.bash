@@ -20,7 +20,10 @@ function install()
 
     unzipRemoteFile "${nginxDownloadURL}" "${nginxTempFolder}"
     cd "${nginxTempFolder}"
-    "${nginxTempFolder}/configure" --prefix="${installFolder}" --with-cc-opt="-Wno-deprecated-declarations" --with-http_ssl_module --with-pcre="${pcreTempFolder}/$(getFileName "${pcreDownloadURL}")"
+    "${nginxTempFolder}/configure" --prefix="${installFolder}" \
+                                   --with-cc-opt="-Wno-deprecated-declarations" \
+                                   --with-http_ssl_module \
+                                   --with-pcre="${pcreTempFolder}/$(getFileName "${pcreDownloadURL}")"
     make
     make install
     rm -rf "${pcreTempFolder}" "${nginxTempFolder}"
