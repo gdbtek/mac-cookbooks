@@ -10,6 +10,17 @@ function install()
     # Install
 
     unzipRemoteFile "${downloadURL}" "${installFolder}"
+
+    # Config Server
+
+    local serverConfigData=(
+        8009 "${ajpPort}"
+        8005 "${commandPort}"
+        8080 "${httpPort}"
+        8443 "${httpsPort}"
+    )
+
+    createFileFromTemplate "${installFolder}/conf/server.xml" "${installFolder}/conf/server.xml" "${serverConfigData[@]}"
 }
 
 function main()
