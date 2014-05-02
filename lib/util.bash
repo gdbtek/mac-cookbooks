@@ -16,6 +16,21 @@ function fatal()
     exit 1
 }
 
+function trimString()
+{
+    echo "${1}" | sed -e 's/^ *//g' -e 's/ *$//g'
+}
+
+function isEmptyString()
+{
+    if [[ "$(trimString ${1})" = '' ]]
+    then
+        echo 'true'
+    else
+        echo 'false'
+    fi
+}
+
 function getFileName()
 {
     local fullFileName="$(basename "${1}")"
@@ -63,14 +78,23 @@ function unzipRemoteFile()
 {
     local downloadURL="${1}"
     local installFolder="${2}"
+    local extension="${3}"
 
-    local extension="$(getFileExtension "${downloadURL}")"
+    # Find Extension
 
-    if [[ "$(echo "${extension}" | grep -i 'tgz')" != '' ||
-          "$(echo "${downloadURL}" | grep -io ".tar.gz$")" != '' ]]
+    if [[ "$(isEmptyString "${extension}")" = 'true' ]]
+    then
+        extension="$(getFileExtension "${downloadURL}")"
+    fi
+
+    # Unzip
+
+    if [[ "$(echo "${extension}" | grep -i '^tgz$')" != '' ||
+          "$(echo "${extension}" | grep -i '^tar\.gz$')" != '' ||
+          "$(echo "${extension}" | grep -i '^gz$')" != '' ]]
     then
         curl -L "${downloadURL}" | tar xz --strip 1 -C "${installFolder}"
-    elif [[ "$(echo "${extension}" | grep -i 'zip')" != '' ]]
+    elif [[ "$(echo "${extension}" | grep -i '^zip$')" != '' ]]
     then
         local zipFile="${installFolder}/$(basename "${downloadURL}")"
 
