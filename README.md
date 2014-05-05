@@ -1,2 +1,2 @@
-setup-mac
-=========
+mac-cookbooks
+=============
