@@ -19,7 +19,7 @@ function main()
     source "${appPath}/../../../lib/util.bash" || exit 1
     source "${appPath}/../attributes/default.bash" || exit 1
 
-    header 'INSTALLING GO'
+    header 'INSTALLING GO-LANG'
 
     install
 }
