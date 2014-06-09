@@ -71,7 +71,7 @@ function createFileFromTemplate()
 
         echo "${content}" > "${destinationFile}"
     else
-        fatal "ERROR: file '${sourceFile}' not found!"
+        fatal "FATAL: file '${sourceFile}' not found!"
     fi
 }
 
@@ -104,7 +104,7 @@ function unzipRemoteFile()
         unzip -q "${zipFile}" -d "${installFolder}"
         rm -f "${zipFile}"
     else
-        fatal "ERROR: file extension '${extension}' is not yet supported to unzip!"
+        fatal "FATAL: file extension '${extension}' is not yet supported to unzip!"
     fi
 }
 
