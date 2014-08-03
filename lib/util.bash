@@ -49,7 +49,11 @@ function getFileName()
 
 function getRemoteFileContent()
 {
-    curl -s -X 'GET' "${1}"
+    local url="${1}"
+
+    # Get Content
+
+    curl -s -X 'GET' "${url}"
 }
 
 function unzipRemoteFile()
@@ -72,14 +76,23 @@ function unzipRemoteFile()
           "$(echo "${extension}" | grep -i '^tar\.gz$')" != '' ||
           "$(echo "${exExtension}" | grep -i '^tar\.gz$')" != '' ]]
     then
+        echo
         curl -L "${downloadURL}" | tar xz --strip 1 -C "${installFolder}"
     elif [[ "$(echo "${extension}" | grep -i '^zip$')" != '' ]]
     then
-        local zipFile="${installFolder}/$(basename "${downloadURL}")"
+        # Unzip
 
-        curl -L "${downloadURL}" -o "${zipFile}"
-        unzip -q "${zipFile}" -d "${installFolder}"
-        rm -f "${zipFile}"
+        if [[ "$(existCommand 'unzip')" = 'true' ]]
+        then
+            local zipFile="${installFolder}/$(basename "${downloadURL}")"
+
+            echo
+            curl -L "${downloadURL}" -o "${zipFile}"
+            unzip -q "${zipFile}" -d "${installFolder}"
+            rm -f "${zipFile}"
+        else
+            fatal "FATAL: install 'unzip' command failed!"
+        fi
     else
         fatal "FATAL: file extension '${extension}' is not yet supported to unzip!"
     fi
@@ -141,7 +154,26 @@ function trimString()
 # SYSTEM UTILITIES #
 ####################
 
+function existCommand()
+{
+    local command="${1}"
+
+    if [[ "$(which "${command}")" = '' ]]
+    then
+        echo 'false'
+    else
+        echo 'true'
+    fi
+}
+
 function getTemporaryFolder()
 {
-    mktemp -d "$(formatPath "${TMPDIR}")/$(date +%m%d%Y_%H%M%S)_XXXXXXXXXX"
+    local temporaryDirectory='/tmp'
+
+    if [[ "$(isEmptyString "${TMPDIR}")" = 'false' ]]
+    then
+        temporaryDirectory="$(formatPath "${TMPDIR}")"
+    fi
+
+    mktemp -d "${temporaryDirectory}/$(date +%m%d%Y_%H%M%S)_XXXXXXXXXX"
 }
