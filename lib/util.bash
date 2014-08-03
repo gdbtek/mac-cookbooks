@@ -1,54 +1,8 @@
 #!/bin/bash
 
-function header()
-{
-    echo -e "\n\033[1;33m>>>>>>>>>> \033[1;4;35m${1}\033[0m \033[1;33m<<<<<<<<<<\033[0m\n"
-}
-
-function error()
-{
-    echo -e "\033[1;31m${1}\033[0m" 1>&2
-}
-
-function fatal()
-{
-    error "${1}"
-    exit 1
-}
-
-function trimString()
-{
-    echo "${1}" | sed -e 's/^ *//g' -e 's/ *$//g'
-}
-
-function isEmptyString()
-{
-    if [[ "$(trimString ${1})" = '' ]]
-    then
-        echo 'true'
-    else
-        echo 'false'
-    fi
-}
-
-function getFileName()
-{
-    local fullFileName="$(basename "${1}")"
-
-    echo "${fullFileName%.*}"
-}
-
-function getFileExtension()
-{
-    local fullFileName="$(basename "${1}")"
-
-    echo "${fullFileName##*.}"
-}
-
-function escapeSearchPattern()
-{
-    echo "$(echo "${1}" | sed "s@\[@\\\\[@g" | sed "s@\*@\\\\*@g" | sed "s@\%@\\\\%@g")"
-}
+########################
+# FILE LOCAL UTILITIES #
+########################
 
 function createFileFromTemplate()
 {
@@ -73,6 +27,29 @@ function createFileFromTemplate()
     else
         fatal "FATAL: file '${sourceFile}' not found!"
     fi
+}
+
+function getFileExtension()
+{
+    local fullFileName="$(basename "${1}")"
+
+    echo "${fullFileName##*.}"
+}
+
+function getFileName()
+{
+    local fullFileName="$(basename "${1}")"
+
+    echo "${fullFileName%.*}"
+}
+
+#########################
+# FILE REMOTE UTILITIES #
+#########################
+
+function getRemoteFileContent()
+{
+    curl -s -X 'GET' "${1}"
 }
 
 function unzipRemoteFile()
@@ -108,14 +85,24 @@ function unzipRemoteFile()
     fi
 }
 
-function getRemoteFileContent()
+####################
+# STRING UTILITIES #
+####################
+
+function error()
 {
-    curl -s -X 'GET' "${1}"
+    echo -e "\033[1;31m${1}\033[0m" 1>&2
 }
 
-function getTemporaryFolder()
+function escapeSearchPattern()
 {
-    mktemp -d "$(formatPath "${TMPDIR}")/$(date +%m%d%Y_%H%M%S)_XXXXXXXXXX"
+    echo "$(echo "${1}" | sed "s@\[@\\\\[@g" | sed "s@\*@\\\\*@g" | sed "s@\%@\\\\%@g")"
+}
+
+function fatal()
+{
+    error "${1}"
+    exit 1
 }
 
 function formatPath()
@@ -128,4 +115,33 @@ function formatPath()
     done
 
     echo "${string}" | sed -e 's/\/$//g'
+}
+
+function header()
+{
+    echo -e "\n\033[1;33m>>>>>>>>>> \033[1;4;35m${1}\033[0m \033[1;33m<<<<<<<<<<\033[0m\n"
+}
+
+function isEmptyString()
+{
+    if [[ "$(trimString ${1})" = '' ]]
+    then
+        echo 'true'
+    else
+        echo 'false'
+    fi
+}
+
+function trimString()
+{
+    echo "${1}" | sed -e 's/^ *//g' -e 's/ *$//g'
+}
+
+####################
+# SYSTEM UTILITIES #
+####################
+
+function getTemporaryFolder()
+{
+    mktemp -d "$(formatPath "${TMPDIR}")/$(date +%m%d%Y_%H%M%S)_XXXXXXXXXX"
 }
