@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 ########################
 # FILE LOCAL UTILITIES #
@@ -133,6 +133,11 @@ function formatPath()
 function header()
 {
     echo -e "\n\033[1;33m>>>>>>>>>> \033[1;4;35m${1}\033[0m \033[1;33m<<<<<<<<<<\033[0m\n"
+}
+
+function info()
+{
+    echo -e "\033[1;36m${1}\033[0m"
 }
 
 function isEmptyString()

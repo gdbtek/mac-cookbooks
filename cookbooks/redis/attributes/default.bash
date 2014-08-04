@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 downloadURL='http://download.redis.io/releases/redis-stable.tar.gz'
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 downloadURL='https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-2.6.1.tgz'
 

@@ -1,18 +1,20 @@
-#!/bin/bash
+#!/bin/bash -e
 
 function install()
 {
     # Clean Up
 
-    sudo rm -rf "${installFolder}"
-    mkdir -p "${installFolder}"
+    rm -rf "${brewInstallFolder}"
+    mkdir -p "${brewInstallFolder}"
 
     # Install
 
-    unzipRemoteFile "${downloadURL}" "${installFolder}" 'tar.gz'
+    unzipRemoteFile "${brewDownloadURL}" "${brewInstallFolder}" 'tar.gz'
 
-    "${installFolder}/bin/brew" doctor
-    "${installFolder}/bin/brew" update
+    "${brewInstallFolder}/bin/brew" doctor
+    "${brewInstallFolder}/bin/brew" update
+
+    info "\n$(aws --version 2>&1)"
 }
 
 function main()

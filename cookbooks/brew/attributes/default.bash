@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/bash -e
 
-downloadURL='https://github.com/mxcl/homebrew/tarball/master'
+brewDownloadURL='https://github.com/mxcl/homebrew/tarball/master'
 
-installFolder='/Volumes/Data/Applications/Brew'
+brewInstallFolder='/Volumes/Data/Applications/Brew'

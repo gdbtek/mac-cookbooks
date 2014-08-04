@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 downloadURL='https://github.com/wg/wrk.git'
 
