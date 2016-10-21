@@ -4,27 +4,35 @@ function install()
 {
     # Clean Up
 
-    rm -rf "${brewInstallFolder}"
-    mkdir -p "${brewInstallFolder}"
+    initializeFolder "${BREW_INSTALL_FOLDER}"
 
     # Install
 
-    unzipRemoteFile "${brewDownloadURL}" "${brewInstallFolder}" 'tar.gz'
+    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}"
 
-    "${brewInstallFolder}/bin/brew" doctor
-    "${brewInstallFolder}/bin/brew" update
+    "${BREW_INSTALL_FOLDER}/bin/brew" doctor
+    "${BREW_INSTALL_FOLDER}/bin/brew" update
 
-    info "\n$(aws --version 2>&1)"
+    # Display Version
+
+    # displayVersion "$(node --version)\nNPM Version  : $(npm --version)"
 }
 
 function main()
 {
-    local appPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local -r installFolder="${1}"
 
-    source "${appPath}/../../../lib/util.bash" || exit 1
-    source "${appPath}/../attributes/default.bash" || exit 1
+    APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
+    source "${APP_FOLDER_PATH}/../attributes/default.bash"
+
+    checkRequireMacSystem
+    checkRequireRootUser
 
     header 'INSTALLING BREW'
+
+    # Install
 
     install
 }
