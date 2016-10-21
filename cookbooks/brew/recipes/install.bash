@@ -8,7 +8,7 @@ function install()
 
     # Install
 
-    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" '.tar.gz'
+    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" 'tar.gz'
 
     "${BREW_INSTALL_FOLDER}/bin/brew" doctor
     "${BREW_INSTALL_FOLDER}/bin/brew" update
