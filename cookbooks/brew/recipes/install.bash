@@ -8,14 +8,10 @@ function install()
 
     # Install
 
-    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}"
+    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" '.tar.gz'
 
     "${BREW_INSTALL_FOLDER}/bin/brew" doctor
     "${BREW_INSTALL_FOLDER}/bin/brew" update
-
-    # Display Version
-
-    # displayVersion "$(node --version)\nNPM Version  : $(npm --version)"
 }
 
 function main()
@@ -28,7 +24,6 @@ function main()
     source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
     checkRequireMacSystem
-    checkRequireRootUser
 
     header 'INSTALLING BREW'
 
