@@ -11,14 +11,32 @@ function install()
     unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" 'tar.gz'
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${BREW_INSTALL_FOLDER}"
 
-    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew doctor"
-    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew update"
+    # Update Install Location
 
-    symlinkLocalBin "${BREW_INSTALL_FOLDER}/bin"
+    if [[ "${BREW_INSTALL_FOLDER}" != '/usr/local' ]]
+    then
+        # Update Global Brew
+
+        local -r globalConfigData=('__INSTALL_FOLDER__' "${BREW_INSTALL_FOLDER}")
+
+        createFileFromTemplate "$(dirname "${BASH_SOURCE[0]}")/../templates/brew" '/usr/local/bin/brew' "${globalConfigData[@]}"
+        chmod 755 '/usr/local/bin/brew'
+
+        # Update Origin Brew
+
+        local -r originConfigData=('/usr/local' "${BREW_INSTALL_FOLDER}")
+
+        createFileFromTemplate "${BREW_INSTALL_FOLDER}/bin/brew" "${BREW_INSTALL_FOLDER}/bin/brew" "${originConfigData[@]}"
+    fi
+
+    # Update
+
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew doctor || true"
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew update"
 
     # Display Version
 
-    displayVersion "$(brew -v)"
+    displayVersion "$(su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew -v")"
 }
 
 function main()
