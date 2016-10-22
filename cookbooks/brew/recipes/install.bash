@@ -41,8 +41,6 @@ function install()
 
 function main()
 {
-    local -r installFolder="${1}"
-
     local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     source "${appFolderPath}/../../../libraries/util.bash"
