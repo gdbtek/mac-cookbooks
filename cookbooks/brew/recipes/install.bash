@@ -9,9 +9,10 @@ function install()
     # Install
 
     unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" 'tar.gz'
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${BREW_INSTALL_FOLDER}"
 
-    #"${BREW_INSTALL_FOLDER}/bin/brew" doctor
-    #"${BREW_INSTALL_FOLDER}/bin/brew" update
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew doctor"
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew update"
 
     symlinkLocalBin "${BREW_INSTALL_FOLDER}/bin"
 
@@ -30,6 +31,7 @@ function main()
     source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
     checkRequireMacSystem
+    checkRequireRootUser
 
     header 'INSTALLING BREW'
 
