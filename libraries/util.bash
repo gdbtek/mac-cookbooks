@@ -225,7 +225,17 @@ function symlinkLocalBin()
 {
     local -r sourceBinFolder="${1}"
 
-    find "${sourceBinFolder}" -maxdepth 1 -xtype f -perm -u+x -exec bash -c -e '
+    if [[ "$(isMacOperatingSystem)" = 'true' ]]
+    then
+        local -r type='-type'
+    elif [[ "$(isCentOSDistributor)" = 'true' || "$(isRedHatDistributor)" = 'true' || "$(isUbuntuDistributor)" = 'true' ]]
+    then
+        local -r type='-xtype'
+    else
+        fatal '\nFATAL : only support CentOS, Mac, RedHat, Ubuntu OS'
+    fi
+
+    find "${sourceBinFolder}" -maxdepth 1 "${type}" f -perm -u+x -exec bash -c -e '
         for file
         do
             ln -f -s "${file}" "/usr/local/bin/$(basename "${file}")"
@@ -989,9 +999,11 @@ function checkExistUserLogin()
     fi
 }
 
-function checkRequirePort()
+function checkRequirePorts()
 {
     local -r ports=("${@}")
+
+    installPackage 'lsof' 'lsof'
 
     local -r headerRegex='^COMMAND\s\+PID\s\+USER\s\+FD\s\+TYPE\s\+DEVICE\s\+SIZE\/OFF\s\+NODE\s\+NAME$'
     local -r status="$(lsof -i -n -P | grep "\( (LISTEN)$\)\|\(${headerRegex}\)")"
@@ -1140,6 +1152,8 @@ function deleteUser()
 function displayOpenPorts()
 {
     local -r sleepTimeInSecond="${1}"
+
+    installPackage 'lsof' 'lsof'
 
     header 'DISPLAYING OPEN PORTS'
 
