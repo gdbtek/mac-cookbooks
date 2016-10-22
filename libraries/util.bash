@@ -1371,6 +1371,15 @@ function getTemporaryFolderRoot()
     echo "${temporaryFolder}"
 }
 
+function getUserGroupName()
+{
+    local -r userLogin="${1}"
+
+    checkExistUserLogin "${userLogin}"
+
+    id -g -n "${userLogin}"
+}
+
 function getUserHomeFolder()
 {
     local -r user="${1}"
@@ -1416,7 +1425,7 @@ function isDistributor()
 {
     local -r distributor="${1}"
 
-    local -r found="$(grep -F -i -o "${distributor}" < '/proc/version')"
+    local -r found="$(grep -F -i -o -s "${distributor}" '/proc/version')"
 
     if [[ "$(isEmptyString "${found}")" = 'true' ]]
     then
