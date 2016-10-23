@@ -2,9 +2,14 @@
 
 function install()
 {
+    local -r DEFAULT_INSTALL_FOLDER='/usr/local'
+
     # Clean Up
 
-    initializeFolder "${BREW_INSTALL_FOLDER}"
+    if [[ "${BREW_INSTALL_FOLDER}" != "${DEFAULT_INSTALL_FOLDER}" ]]
+    then
+        initializeFolder "${BREW_INSTALL_FOLDER}"
+    fi
 
     # Install
 
@@ -13,18 +18,15 @@ function install()
 
     # Update Install Location
 
-    if [[ "${BREW_INSTALL_FOLDER}" != '/usr/local' ]]
+    if [[ "${BREW_INSTALL_FOLDER}" != "${DEFAULT_INSTALL_FOLDER}" ]]
     then
         # Update Global Brew
 
-        local -r globalConfigData=('__INSTALL_FOLDER__' "${BREW_INSTALL_FOLDER}")
-
-        createFileFromTemplate "$(dirname "${BASH_SOURCE[0]}")/../templates/brew" '/usr/local/bin/brew' "${globalConfigData[@]}"
-        chmod 755 '/usr/local/bin/brew'
+        createAbsoluteLocalBin 'brew' "${BREW_INSTALL_FOLDER}/bin/brew"
 
         # Update Origin Brew
 
-        local -r originConfigData=('/usr/local' "${BREW_INSTALL_FOLDER}")
+        local -r originConfigData=("${DEFAULT_INSTALL_FOLDER}" "${BREW_INSTALL_FOLDER}")
 
         createFileFromTemplate "${BREW_INSTALL_FOLDER}/bin/brew" "${BREW_INSTALL_FOLDER}/bin/brew" "${originConfigData[@]}"
     fi
