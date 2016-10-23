@@ -130,7 +130,7 @@ function createAbsoluteLocalBin()
 
     checkExistFile "${sourceFilePath}"
 
-    printf "#!/bin/bash -e\n'%s' \"\${@}\"" "${sourceFilePath}" > "/usr/local/bin/${localBinFileName}"
+    printf "#!/bin/bash -e\n\n'%s' \"\${@}\"" "${sourceFilePath}" > "/usr/local/bin/${localBinFileName}"
     chmod 755 "/usr/local/bin/${localBinFileName}"
 }
 
