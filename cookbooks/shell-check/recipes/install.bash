@@ -1,18 +1,31 @@
 #!/bin/bash -e
 
+function installDependencies()
+{
+    if [[ "$(existCommand 'brew')" = 'false' ]]
+    then
+        "${APP_FOLDER_PATH}/../../brew/recipes/install.bash"
+    fi
+}
+
 function install()
 {
-    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew install shellcheck"
-    ln -f -s "${BREW_INSTALL_FOLDER}/bin/shellcheck" '/usr/local/bin/shellcheck'
+    su -l "${SUDO_USER}" -c "${SHELL_CHECK_BREW_INSTALL_FOLDER}/bin/brew install shellcheck"
+
+    if [[ "${SHELL_CHECK_BREW_INSTALL_FOLDER}" != '/usr/local' ]]
+    then
+        ln -f -s "${SHELL_CHECK_BREW_INSTALL_FOLDER}/bin/shellcheck" '/usr/local/bin/shellcheck'
+    fi
+
     displayVersion "$(shellcheck -V)"
 }
 
 function main()
 {
-    local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-    source "${appFolderPath}/../../../libraries/util.bash"
-    source "${appFolderPath}/../../brew/attributes/default.bash"
+    source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
+    source "${APP_FOLDER_PATH}/../../brew/attributes/default.bash"
 
     checkRequireMacSystem
     checkRequireRootUser
@@ -21,7 +34,9 @@ function main()
 
     # Install
 
+    installDependencies
     install
+    installCleanUp
 }
 
 main "${@}"
