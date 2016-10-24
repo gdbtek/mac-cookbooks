@@ -2,8 +2,6 @@
 
 function install()
 {
-    umask '0022'
-
     # Clean Up
 
     initializeFolder "${MONGODB_INSTALL_FOLDER}"
@@ -46,8 +44,6 @@ function install()
     # Display Version
 
     displayVersion "$("${MONGODB_INSTALL_FOLDER}/bin/mongo" --version)"
-
-    umask '0077'
 }
 
 function main()
@@ -57,7 +53,7 @@ function main()
     source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
     source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
-    checkRequireLinuxSystem
+    checkRequireMacSystem
     checkRequireRootUser
 
     header 'INSTALLING MONGODB'
