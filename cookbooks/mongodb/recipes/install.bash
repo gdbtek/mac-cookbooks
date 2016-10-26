@@ -10,13 +10,6 @@ function install()
     # Install
 
     unzipRemoteFile "${MONGODB_DOWNLOAD_URL}" "${MONGODB_INSTALL_FOLDER}"
-    find "${MONGODB_INSTALL_FOLDER}" -maxdepth 1 -xtype f -delete
-
-    # Config Profile
-
-    local -r profileConfigData=('__INSTALL_FOLDER__' "${MONGODB_INSTALL_FOLDER}")
-
-    createFileFromTemplate "${APP_FOLDER_PATH}/../templates/mongodb.sh.profile" '/etc/profile.d/mongodb.sh' "${profileConfigData[@]}"
 
     # Config Init
 

@@ -1308,6 +1308,9 @@ function generateUserSSHKey()
     header "GENERATING SSH KEY FOR USER '${userLogin}'"
 
     rm -f "${userHome}/.ssh/id_rsa" "${userHome}/.ssh/id_rsa.pub"
+    mkdir -p "${userHome}/.ssh"
+    chmod 700 "${userHome}/.ssh"
+
     ssh-keygen -q -t rsa -N '' -f "${userHome}/.ssh/id_rsa"
     chmod 600 "${userHome}/.ssh/id_rsa" "${userHome}/.ssh/id_rsa.pub"
     chown "${userLogin}:${groupName}" "${userHome}/.ssh/id_rsa" "${userHome}/.ssh/id_rsa.pub"
@@ -1490,10 +1493,10 @@ function isPortOpen()
 
     checkNonEmptyString "${port}" 'undefined port'
 
-    if [[ "$(isLinuxOperatingSystem)" = 'true' ]]
+    if [[ "$(isRedHatDistributor)" = 'true' || "$(isUbuntuDistributor)" = 'true' ]]
     then
         local -r process="$(netstat -l -n -t -u | grep -E ":${port}\s+" | head -1)"
-    elif [[ "$(isMacOperatingSystem)" = 'true' ]]
+    elif [[ "$(isCentOSDistributor)" = 'true' || "$(isMacOperatingSystem)" = 'true' ]]
     then
         local -r process="$(lsof -i -n -P | grep -E -i ":${port}\s+\(LISTEN\)$" | head -1)"
     else
