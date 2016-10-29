@@ -9,7 +9,6 @@ function main()
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/ruby/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/siege/recipes/install.bash"
 }
