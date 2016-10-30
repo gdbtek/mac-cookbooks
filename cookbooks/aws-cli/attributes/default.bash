@@ -2,4 +2,4 @@
 
 export AWS_CLI_DOWNLOAD_URL='https://s3.amazonaws.com/aws-cli/awscli-bundle.zip'
 
-export AWS_CLI_INSTALL_FOLDER='/Volumes/Data/Applications/aws/aws-cli'
+export AWS_CLI_INSTALL_FOLDER='/Volumes/Data/Tools/aws/aws-cli'
