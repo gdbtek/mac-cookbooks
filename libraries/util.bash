@@ -363,6 +363,17 @@ function unzipRemoteFile()
         debug "\nDownloading '${downloadURL}'\n"
         curl -L "${downloadURL}" --retry 12 --retry-delay 5 | tar -C "${installFolder}" -x -z --strip 1
         echo
+    elif [[ "$(grep -i '^tar\.bz2$' <<< "${exExtension}")" != '' ]]
+    then
+        # Install BZip2
+
+        installBZip2Command
+
+        # Unzip
+
+        debug "\nDownloading '${downloadURL}'\n"
+        curl -L "${downloadURL}" --retry 12 --retry-delay 5 | tar -C "${installFolder}" -j -x --strip 1
+        echo
     elif [[ "$(grep -i '^zip$' <<< "${extension}")" != '' ]]
     then
         # Install Unzip
@@ -431,29 +442,11 @@ function installBuildEssential()
     fi
 }
 
-function installPackages()
+function installBZip2Command()
 {
-    local -r packages=("${@}")
+    local -r commandPackage=('bzip2' 'bzip2')
 
-    if [[ "$(isUbuntuDistributor)" = 'true' ]]
-    then
-        runAptGetUpdate ''
-    fi
-
-    local package=''
-
-    for package in "${packages[@]}"
-    do
-        if [[ "$(isUbuntuDistributor)" = 'true' ]]
-        then
-            installAptGetPackage "${package}"
-        elif [[ "$(isCentOSDistributor)" = 'true' || "$(isRedHatDistributor)" = 'true' ]]
-        then
-            yum install -y "${package}"
-        else
-            fatal '\nFATAL : only support CentOS, RedHat or Ubuntu OS'
-        fi
-    done
+    installCommands "${commandPackage[@]}"
 }
 
 function installCleanUp()
@@ -511,6 +504,31 @@ function installPackage()
     else
         fatal '\nFATAL : only support CentOS, RedHat or Ubuntu OS'
     fi
+}
+
+function installPackages()
+{
+    local -r packages=("${@}")
+
+    if [[ "$(isUbuntuDistributor)" = 'true' ]]
+    then
+        runAptGetUpdate ''
+    fi
+
+    local package=''
+
+    for package in "${packages[@]}"
+    do
+        if [[ "$(isUbuntuDistributor)" = 'true' ]]
+        then
+            installAptGetPackage "${package}"
+        elif [[ "$(isCentOSDistributor)" = 'true' || "$(isRedHatDistributor)" = 'true' ]]
+        then
+            yum install -y "${package}"
+        else
+            fatal '\nFATAL : only support CentOS, RedHat or Ubuntu OS'
+        fi
+    done
 }
 
 function installPIPCommand()
