@@ -11,6 +11,8 @@ function install()
         initializeFolder "${BREW_INSTALL_FOLDER}"
     fi
 
+    rm -f -r "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
+
     # Install
 
     unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" 'tar.gz'
