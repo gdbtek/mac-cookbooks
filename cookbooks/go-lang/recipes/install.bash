@@ -12,7 +12,7 @@ function install()
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${GO_LANG_INSTALL_FOLDER}"
 
     symlinkLocalBin "${GO_LANG_INSTALL_FOLDER}/bin"
-    ln -F -s "${GO_LANG_INSTALL_FOLDER}" '/usr/local/go'
+    ln -f -s "${GO_LANG_INSTALL_FOLDER}" '/usr/local/go'
     rm -f -r "${GO_LANG_INSTALL_FOLDER}/$(basename "${GO_LANG_INSTALL_FOLDER}")"
 
     # Display Version
