@@ -10,8 +10,10 @@ function install()
 
     unzipRemoteFile "${GO_LANG_DOWNLOAD_URL}" "${GO_LANG_INSTALL_FOLDER}"
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${GO_LANG_INSTALL_FOLDER}"
+
     symlinkLocalBin "${GO_LANG_INSTALL_FOLDER}/bin"
-    ln -f -s "${GO_LANG_INSTALL_FOLDER}" '/usr/local/go'
+    ln -F -s "${GO_LANG_INSTALL_FOLDER}" '/usr/local/go'
+    rm -f -r "${GO_LANG_INSTALL_FOLDER}/$(basename "${GO_LANG_INSTALL_FOLDER}")"
 
     # Display Version
 
