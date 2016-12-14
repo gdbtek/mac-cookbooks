@@ -10,6 +10,8 @@ function installDependencies()
 
 function install()
 {
+    initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
+
     su -l "${SUDO_USER}" -c "${SHELL_CHECK_BREW_INSTALL_FOLDER}/bin/brew install shellcheck"
 
     if [[ "${SHELL_CHECK_BREW_INSTALL_FOLDER}" != '/usr/local' ]]
