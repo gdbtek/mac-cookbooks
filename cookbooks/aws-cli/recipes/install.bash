@@ -5,6 +5,7 @@ function install()
     # Clean Up
 
     initializeFolder "${AWS_CLI_INSTALL_FOLDER}"
+    rm -f '/usr/local/bin/aws'
 
     # Install
 
