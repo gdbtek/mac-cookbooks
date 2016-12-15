@@ -8,6 +8,7 @@ function main()
     "${appFolderPath}/../../../cookbooks/brew/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/maven/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"

@@ -10,11 +10,11 @@ function install()
 
     unzipRemoteFile "${MAVEN_DOWNLOAD_URL}" "${MAVEN_INSTALL_FOLDER}"
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${MAVEN_INSTALL_FOLDER}"
-    ln -f -s "${MAVEN_INSTALL_FOLDER}/bin/mvn" '/usr/local/bin/mvn'
+    symlinkLocalBin "${MAVEN_INSTALL_FOLDER}/bin"
 
     # Display Version
 
-    displayVersion "$("${MAVEN_INSTALL_FOLDER}/bin/mvn" -v)"
+    displayVersion "$(mvn -v)"
 }
 
 function main()
