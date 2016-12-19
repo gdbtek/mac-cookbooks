@@ -58,7 +58,6 @@ function main()
     # Install
 
     install
-    installCleanUp
 }
 
 main "${@}"

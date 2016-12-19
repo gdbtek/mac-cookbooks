@@ -32,7 +32,6 @@ function main()
     header 'INSTALLING JQ'
 
     install
-    installCleanUp
 }
 
 main "${@}"

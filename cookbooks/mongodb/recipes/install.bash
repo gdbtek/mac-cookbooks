@@ -54,7 +54,6 @@ function main()
     checkRequirePorts "${MONGODB_PORT}"
 
     install
-    installCleanUp
 }
 
 main "${@}"

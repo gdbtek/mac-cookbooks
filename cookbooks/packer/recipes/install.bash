@@ -31,7 +31,6 @@ function main()
     header 'INSTALLING PACKER'
 
     install
-    installCleanUp
 }
 
 main "${@}"

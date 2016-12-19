@@ -35,7 +35,6 @@ function main()
     header 'INSTALLING AWS-CLI'
 
     install
-    installCleanUp
 }
 
 main "${@}"

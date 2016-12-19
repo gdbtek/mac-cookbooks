@@ -30,7 +30,6 @@ function main()
     header 'INSTALLING MAVEN'
 
     install
-    installCleanUp
 }
 
 main "${@}"

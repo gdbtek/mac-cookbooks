@@ -39,7 +39,6 @@ function main()
     header 'INSTALLING SIEGE'
 
     install
-    installCleanUp
 }
 
 main "${@}"
