@@ -903,6 +903,46 @@ function warn()
 # SYSTEM UTILITIES #
 ####################
 
+function addSwapSpace()
+{
+    local swapSize="${1}"
+    local swapFile="${2}"
+
+    header 'ADDING SWAP SPACE'
+
+    # Set Default Values
+
+    if [[ "$(isEmptyString "${swapSize}")" = 'true' ]]
+    then
+        swapSize='500000'
+    fi
+
+    if [[ "$(isEmptyString "${swapFile}")" = 'true' ]]
+    then
+        swapFile='/var/tmp/swap'
+    fi
+
+    rm -f "${swapFile}"
+    touch "${swapFile}"
+
+    # Create Swap File
+
+    dd if=/dev/zero of="${swapFile}" bs=1024 count="${swapSize}"
+    mkswap "${swapFile}"
+    chmod 600 "${swapFile}"
+    swapon "${swapFile}"
+
+    # Config Swap File System
+
+    local -r fstabConfig="${swapFile} swap swap defaults 0 0"
+
+    appendToFileIfNotFound '/etc/fstab' "$(stringToSearchPattern "${fstabConfig}")" "${fstabConfig}" 'true' 'false' 'true'
+
+    # Display Swap Status
+
+    free -m
+}
+
 function addUser()
 {
     local -r userLogin="${1}"
@@ -1664,6 +1704,7 @@ function stopService()
 
         systemctl daemon-reload
         systemctl stop "${serviceName}"
+        systemctl status "${serviceName}"
     else
         header "STOPPING UPSTART SERVICE ${serviceName}"
 
