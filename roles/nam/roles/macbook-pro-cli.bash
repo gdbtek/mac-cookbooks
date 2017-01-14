@@ -15,6 +15,7 @@ function main()
     "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/siege/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/vault/recipes/install.bash"
 }
 
 main "${@}"
