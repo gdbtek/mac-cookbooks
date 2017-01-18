@@ -14,6 +14,7 @@ function main()
     "${appFolderPath}/../../../cookbooks/nomad/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/phantom-js/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/siege/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/vault/recipes/install.bash"
