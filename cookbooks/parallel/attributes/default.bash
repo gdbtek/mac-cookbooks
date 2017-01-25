@@ -2,4 +2,4 @@
 
 export PARALLEL_DOWNLOAD_URL='ftp://ftp.gnu.org/gnu/parallel/parallel-latest.tar.bz2'
 
-export PARALLEL_INSTALL_FOLDER='/Volumes/Data/Tools/parallel'
+export PARALLEL_INSTALL_FOLDER_PATH='/Volumes/Data/Tools/parallel'

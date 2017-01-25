@@ -4,13 +4,13 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${PHANTOM_JS_INSTALL_FOLDER}"
+    initializeFolder "${PHANTOM_JS_INSTALL_FOLDER_PATH}"
 
     # Install
 
-    unzipRemoteFile "${PHANTOM_JS_DOWNLOAD_URL}" "${PHANTOM_JS_INSTALL_FOLDER}"
+    unzipRemoteFile "${PHANTOM_JS_DOWNLOAD_URL}" "${PHANTOM_JS_INSTALL_FOLDER_PATH}"
 
-    local -r unzipFolder="$(find "${PHANTOM_JS_INSTALL_FOLDER}" -maxdepth 1 -type d 2> '/dev/null' | tail -1)"
+    local -r unzipFolder="$(find "${PHANTOM_JS_INSTALL_FOLDER_PATH}" -maxdepth 1 -type d 2> '/dev/null' | tail -1)"
 
     if [[ "$(isEmptyString "${unzipFolder}")" = 'true' || "$(trimString "$(wc -l <<< "${unzipFolder}")")" != '1' ]]
     then
@@ -22,17 +22,17 @@ function install()
         fatal "FATAL : folder '${unzipFolder}' empty"
     fi
 
-    moveFolderContent "${unzipFolder}" "${PHANTOM_JS_INSTALL_FOLDER}"
+    moveFolderContent "${unzipFolder}" "${PHANTOM_JS_INSTALL_FOLDER_PATH}"
     rm -f -r "${unzipFolder}"
 
     # Config
 
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PHANTOM_JS_INSTALL_FOLDER}"
-    ln -f -s "${PHANTOM_JS_INSTALL_FOLDER}/bin/phantomjs" '/usr/local/bin/phantomjs'
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PHANTOM_JS_INSTALL_FOLDER_PATH}"
+    ln -f -s "${PHANTOM_JS_INSTALL_FOLDER_PATH}/bin/phantomjs" '/usr/local/bin/phantomjs'
 
     # Display Version
 
-    displayVersion "$("${PHANTOM_JS_INSTALL_FOLDER}/bin/phantomjs" --version)"
+    displayVersion "$("${PHANTOM_JS_INSTALL_FOLDER_PATH}/bin/phantomjs" --version)"
 }
 
 function main()

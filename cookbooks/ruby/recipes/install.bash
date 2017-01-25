@@ -4,7 +4,7 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${RUBY_INSTALL_FOLDER}"
+    initializeFolder "${RUBY_INSTALL_FOLDER_PATH}"
 
     # Install
 
@@ -12,11 +12,11 @@ function install()
 
     unzipRemoteFile "${RUBY_DOWNLOAD_URL}" "${tempFolder}"
     cd "${tempFolder}"
-    "${tempFolder}/configure" --prefix="${RUBY_INSTALL_FOLDER}"
+    "${tempFolder}/configure" --prefix="${RUBY_INSTALL_FOLDER_PATH}"
     make
     make install
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${RUBY_INSTALL_FOLDER}"
-    symlinkLocalBin "${RUBY_INSTALL_FOLDER}/bin"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${RUBY_INSTALL_FOLDER_PATH}"
+    symlinkLocalBin "${RUBY_INSTALL_FOLDER_PATH}/bin"
     rm -f -r "${tempFolder}"
 
     # Display Version

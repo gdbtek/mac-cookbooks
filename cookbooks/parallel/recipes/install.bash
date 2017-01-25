@@ -4,7 +4,7 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${PARALLEL_INSTALL_FOLDER}"
+    initializeFolder "${PARALLEL_INSTALL_FOLDER_PATH}"
 
     # Install
 
@@ -12,11 +12,11 @@ function install()
 
     unzipRemoteFile "${PARALLEL_DOWNLOAD_URL}" "${tempFolder}"
     cd "${tempFolder}"
-    "${tempFolder}/configure" --prefix="${PARALLEL_INSTALL_FOLDER}"
+    "${tempFolder}/configure" --prefix="${PARALLEL_INSTALL_FOLDER_PATH}"
     make
     make install
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PARALLEL_INSTALL_FOLDER}"
-    ln -f -s "${PARALLEL_INSTALL_FOLDER}/bin/parallel" '/usr/local/bin/parallel'
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PARALLEL_INSTALL_FOLDER_PATH}"
+    ln -f -s "${PARALLEL_INSTALL_FOLDER_PATH}/bin/parallel" '/usr/local/bin/parallel'
     rm -f -r "${tempFolder}"
 
     # Display Version

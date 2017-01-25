@@ -4,20 +4,20 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${GO_LANG_INSTALL_FOLDER}"
+    initializeFolder "${GO_LANG_INSTALL_FOLDER_PATH}"
 
     # Install
 
-    unzipRemoteFile "${GO_LANG_DOWNLOAD_URL}" "${GO_LANG_INSTALL_FOLDER}"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${GO_LANG_INSTALL_FOLDER}"
+    unzipRemoteFile "${GO_LANG_DOWNLOAD_URL}" "${GO_LANG_INSTALL_FOLDER_PATH}"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${GO_LANG_INSTALL_FOLDER_PATH}"
 
-    symlinkLocalBin "${GO_LANG_INSTALL_FOLDER}/bin"
-    ln -f -s "${GO_LANG_INSTALL_FOLDER}" '/usr/local/go'
-    rm -f -r "${GO_LANG_INSTALL_FOLDER}/$(basename "${GO_LANG_INSTALL_FOLDER}")"
+    symlinkLocalBin "${GO_LANG_INSTALL_FOLDER_PATH}/bin"
+    ln -f -s "${GO_LANG_INSTALL_FOLDER_PATH}" '/usr/local/go'
+    rm -f -r "${GO_LANG_INSTALL_FOLDER_PATH}/$(basename "${GO_LANG_INSTALL_FOLDER_PATH}")"
 
     # Display Version
 
-    export GOROOT="${GO_LANG_INSTALL_FOLDER}"
+    export GOROOT="${GO_LANG_INSTALL_FOLDER_PATH}"
     displayVersion "$(go version)"
 }
 

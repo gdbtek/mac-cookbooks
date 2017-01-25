@@ -4,7 +4,7 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${SIEGE_INSTALL_FOLDER}"
+    initializeFolder "${SIEGE_INSTALL_FOLDER_PATH}"
 
     # Install
 
@@ -12,17 +12,17 @@ function install()
 
     unzipRemoteFile "${SIEGE_DOWNLOAD_URL}" "${tempFolder}"
     cd "${tempFolder}"
-    "${tempFolder}/configure" --prefix="${SIEGE_INSTALL_FOLDER}"
+    "${tempFolder}/configure" --prefix="${SIEGE_INSTALL_FOLDER_PATH}"
     make
     make install
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${SIEGE_INSTALL_FOLDER}"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${SIEGE_INSTALL_FOLDER_PATH}"
     cd
     rm -f -r "${tempFolder}"
-    ln -f -s "${SIEGE_INSTALL_FOLDER}/bin/siege" '/usr/local/bin/siege'
+    ln -f -s "${SIEGE_INSTALL_FOLDER_PATH}/bin/siege" '/usr/local/bin/siege'
 
     # Display Version
 
-    displayVersion "$("${SIEGE_INSTALL_FOLDER}/bin/siege" --version 2>&1)"
+    displayVersion "$("${SIEGE_INSTALL_FOLDER_PATH}/bin/siege" --version 2>&1)"
 }
 
 function main()

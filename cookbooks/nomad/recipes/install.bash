@@ -4,18 +4,18 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${NOMAD_INSTALL_FOLDER}"
-    initializeFolder "${NOMAD_INSTALL_FOLDER}/bin"
+    initializeFolder "${NOMAD_INSTALL_FOLDER_PATH}"
+    initializeFolder "${NOMAD_INSTALL_FOLDER_PATH}/bin"
 
     # Install
 
-    unzipRemoteFile "${NOMAD_DOWNLOAD_URL}" "${NOMAD_INSTALL_FOLDER}/bin"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${NOMAD_INSTALL_FOLDER}"
-    ln -f -s "${NOMAD_INSTALL_FOLDER}/bin/nomad" '/usr/local/bin/nomad'
+    unzipRemoteFile "${NOMAD_DOWNLOAD_URL}" "${NOMAD_INSTALL_FOLDER_PATH}/bin"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${NOMAD_INSTALL_FOLDER_PATH}"
+    ln -f -s "${NOMAD_INSTALL_FOLDER_PATH}/bin/nomad" '/usr/local/bin/nomad'
 
     # Display Version
 
-    displayVersion "$("${NOMAD_INSTALL_FOLDER}/bin/nomad" version)"
+    displayVersion "$("${NOMAD_INSTALL_FOLDER_PATH}/bin/nomad" version)"
 }
 
 function main()

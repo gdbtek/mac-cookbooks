@@ -2,4 +2,4 @@
 
 export RUBY_DOWNLOAD_URL='https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.0.tar.gz'
 
-export RUBY_INSTALL_FOLDER='/Volumes/Data/Tools/ruby'
+export RUBY_INSTALL_FOLDER_PATH='/Volumes/Data/Tools/ruby'

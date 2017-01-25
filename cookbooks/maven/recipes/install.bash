@@ -4,13 +4,13 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${MAVEN_INSTALL_FOLDER}"
+    initializeFolder "${MAVEN_INSTALL_FOLDER_PATH}"
 
     # Install
 
-    unzipRemoteFile "${MAVEN_DOWNLOAD_URL}" "${MAVEN_INSTALL_FOLDER}"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${MAVEN_INSTALL_FOLDER}"
-    symlinkLocalBin "${MAVEN_INSTALL_FOLDER}/bin"
+    unzipRemoteFile "${MAVEN_DOWNLOAD_URL}" "${MAVEN_INSTALL_FOLDER_PATH}"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${MAVEN_INSTALL_FOLDER_PATH}"
+    symlinkLocalBin "${MAVEN_INSTALL_FOLDER_PATH}/bin"
 
     # Display Version
 

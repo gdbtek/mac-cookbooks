@@ -4,18 +4,18 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${CONSUL_INSTALL_FOLDER}"
-    initializeFolder "${CONSUL_INSTALL_FOLDER}/bin"
+    initializeFolder "${CONSUL_INSTALL_FOLDER_PATH}"
+    initializeFolder "${CONSUL_INSTALL_FOLDER_PATH}/bin"
 
     # Install
 
-    unzipRemoteFile "${CONSUL_DOWNLOAD_URL}" "${CONSUL_INSTALL_FOLDER}/bin"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${CONSUL_INSTALL_FOLDER}"
-    ln -f -s "${CONSUL_INSTALL_FOLDER}/bin/consul" '/usr/local/bin/consul'
+    unzipRemoteFile "${CONSUL_DOWNLOAD_URL}" "${CONSUL_INSTALL_FOLDER_PATH}/bin"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${CONSUL_INSTALL_FOLDER_PATH}"
+    ln -f -s "${CONSUL_INSTALL_FOLDER_PATH}/bin/consul" '/usr/local/bin/consul'
 
     # Display Version
 
-    displayVersion "$("${CONSUL_INSTALL_FOLDER}/bin/consul" version)"
+    displayVersion "$("${CONSUL_INSTALL_FOLDER_PATH}/bin/consul" version)"
 }
 
 function main()

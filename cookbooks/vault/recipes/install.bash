@@ -4,18 +4,18 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${VAULT_INSTALL_FOLDER}"
-    initializeFolder "${VAULT_INSTALL_FOLDER}/bin"
+    initializeFolder "${VAULT_INSTALL_FOLDER_PATH}"
+    initializeFolder "${VAULT_INSTALL_FOLDER_PATH}/bin"
 
     # Install
 
-    unzipRemoteFile "${VAULT_DOWNLOAD_URL}" "${VAULT_INSTALL_FOLDER}/bin"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${VAULT_INSTALL_FOLDER}"
-    ln -f -s "${VAULT_INSTALL_FOLDER}/bin/vault" '/usr/local/bin/vault'
+    unzipRemoteFile "${VAULT_DOWNLOAD_URL}" "${VAULT_INSTALL_FOLDER_PATH}/bin"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${VAULT_INSTALL_FOLDER_PATH}"
+    ln -f -s "${VAULT_INSTALL_FOLDER_PATH}/bin/vault" '/usr/local/bin/vault'
 
     # Display Version
 
-    displayVersion "$("${VAULT_INSTALL_FOLDER}/bin/vault" version)"
+    displayVersion "$("${VAULT_INSTALL_FOLDER_PATH}/bin/vault" version)"
 }
 
 function main()

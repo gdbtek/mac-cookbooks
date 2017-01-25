@@ -4,19 +4,19 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${JQ_INSTALL_FOLDER}"
-    initializeFolder "${JQ_INSTALL_FOLDER}/bin"
+    initializeFolder "${JQ_INSTALL_FOLDER_PATH}"
+    initializeFolder "${JQ_INSTALL_FOLDER_PATH}/bin"
 
     # Install
 
-    downloadFile "${JQ_DOWNLOAD_URL}" "${JQ_INSTALL_FOLDER}/bin/jq" 'true'
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${JQ_INSTALL_FOLDER}"
-    chmod 755 "${JQ_INSTALL_FOLDER}/bin/jq"
-    symlinkLocalBin "${JQ_INSTALL_FOLDER}/bin"
+    downloadFile "${JQ_DOWNLOAD_URL}" "${JQ_INSTALL_FOLDER_PATH}/bin/jq" 'true'
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${JQ_INSTALL_FOLDER_PATH}"
+    chmod 755 "${JQ_INSTALL_FOLDER_PATH}/bin/jq"
+    symlinkLocalBin "${JQ_INSTALL_FOLDER_PATH}/bin"
 
     # Display Version
 
-    displayVersion "$("${JQ_INSTALL_FOLDER}/bin/jq" --version)"
+    displayVersion "$("${JQ_INSTALL_FOLDER_PATH}/bin/jq" --version)"
 }
 
 function main()

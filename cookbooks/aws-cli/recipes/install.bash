@@ -4,7 +4,7 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${AWS_CLI_INSTALL_FOLDER}"
+    initializeFolder "${AWS_CLI_INSTALL_FOLDER_PATH}"
     rm -f '/usr/local/bin/aws'
 
     # Install
@@ -12,14 +12,14 @@ function install()
     local -r tempFolder="$(getTemporaryFolder)"
 
     unzipRemoteFile "${AWS_CLI_DOWNLOAD_URL}" "${tempFolder}"
-    python "${tempFolder}/awscli-bundle/install" -b '/usr/local/bin/aws' -i "${AWS_CLI_INSTALL_FOLDER}"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${AWS_CLI_INSTALL_FOLDER}"
-    chmod 755 "${AWS_CLI_INSTALL_FOLDER}/bin/aws"
+    python "${tempFolder}/awscli-bundle/install" -b '/usr/local/bin/aws' -i "${AWS_CLI_INSTALL_FOLDER_PATH}"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${AWS_CLI_INSTALL_FOLDER_PATH}"
+    chmod 755 "${AWS_CLI_INSTALL_FOLDER_PATH}/bin/aws"
     rm -f -r "${tempFolder}"
 
     # Display Version
 
-    displayVersion "$("${AWS_CLI_INSTALL_FOLDER}/bin/aws" --version 2>&1)"
+    displayVersion "$("${AWS_CLI_INSTALL_FOLDER_PATH}/bin/aws" --version 2>&1)"
 }
 
 function main()

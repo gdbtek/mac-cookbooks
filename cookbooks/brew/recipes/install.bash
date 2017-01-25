@@ -2,45 +2,45 @@
 
 function install()
 {
-    local -r DEFAULT_INSTALL_FOLDER='/usr/local'
+    local -r DEFAULT_INSTALL_FOLDER_PATH='/usr/local'
 
     # Clean Up
 
-    if [[ "${BREW_INSTALL_FOLDER}" != "${DEFAULT_INSTALL_FOLDER}" ]]
+    if [[ "${BREW_INSTALL_FOLDER_PATH}" != "${DEFAULT_INSTALL_FOLDER_PATH}" ]]
     then
-        initializeFolder "${BREW_INSTALL_FOLDER}"
+        initializeFolder "${BREW_INSTALL_FOLDER_PATH}"
     fi
 
     rm -f -r "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
     # Install
 
-    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER}" 'tar.gz'
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${BREW_INSTALL_FOLDER}"
+    unzipRemoteFile "${BREW_DOWNLOAD_URL}" "${BREW_INSTALL_FOLDER_PATH}" 'tar.gz'
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${BREW_INSTALL_FOLDER_PATH}"
 
     # Update Install Location
 
-    if [[ "${BREW_INSTALL_FOLDER}" != "${DEFAULT_INSTALL_FOLDER}" ]]
+    if [[ "${BREW_INSTALL_FOLDER_PATH}" != "${DEFAULT_INSTALL_FOLDER_PATH}" ]]
     then
         # Update Global Brew
 
-        createAbsoluteLocalBin 'brew' "${BREW_INSTALL_FOLDER}/bin/brew"
+        createAbsoluteLocalBin 'brew' "${BREW_INSTALL_FOLDER_PATH}/bin/brew"
 
         # Update Origin Brew
 
-        local -r originConfigData=("${DEFAULT_INSTALL_FOLDER}" "${BREW_INSTALL_FOLDER}")
+        local -r originConfigData=("${DEFAULT_INSTALL_FOLDER_PATH}" "${BREW_INSTALL_FOLDER_PATH}")
 
-        createFileFromTemplate "${BREW_INSTALL_FOLDER}/bin/brew" "${BREW_INSTALL_FOLDER}/bin/brew" "${originConfigData[@]}"
+        createFileFromTemplate "${BREW_INSTALL_FOLDER_PATH}/bin/brew" "${BREW_INSTALL_FOLDER_PATH}/bin/brew" "${originConfigData[@]}"
     fi
 
     # Update
 
-    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew doctor || true"
-    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew update"
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER_PATH}/bin/brew doctor || true"
+    su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER_PATH}/bin/brew update"
 
     # Display Version
 
-    displayVersion "$(su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER}/bin/brew -v")"
+    displayVersion "$(su -l "${SUDO_USER}" -c "${BREW_INSTALL_FOLDER_PATH}/bin/brew -v")"
 }
 
 function main()

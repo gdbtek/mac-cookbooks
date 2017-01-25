@@ -4,18 +4,18 @@ function install()
 {
     # Clean Up
 
-    initializeFolder "${TERRAFORM_INSTALL_FOLDER}"
-    initializeFolder "${TERRAFORM_INSTALL_FOLDER}/bin"
+    initializeFolder "${TERRAFORM_INSTALL_FOLDER_PATH}"
+    initializeFolder "${TERRAFORM_INSTALL_FOLDER_PATH}/bin"
 
     # Install
 
-    unzipRemoteFile "${TERRAFORM_DOWNLOAD_URL}" "${TERRAFORM_INSTALL_FOLDER}/bin"
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${TERRAFORM_INSTALL_FOLDER}"
-    ln -f -s "${TERRAFORM_INSTALL_FOLDER}/bin/terraform" '/usr/local/bin/terraform'
+    unzipRemoteFile "${TERRAFORM_DOWNLOAD_URL}" "${TERRAFORM_INSTALL_FOLDER_PATH}/bin"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${TERRAFORM_INSTALL_FOLDER_PATH}"
+    ln -f -s "${TERRAFORM_INSTALL_FOLDER_PATH}/bin/terraform" '/usr/local/bin/terraform'
 
     # Display Version
 
-    displayVersion "$("${TERRAFORM_INSTALL_FOLDER}/bin/terraform" version)"
+    displayVersion "$("${TERRAFORM_INSTALL_FOLDER_PATH}/bin/terraform" version)"
 }
 
 function main()
