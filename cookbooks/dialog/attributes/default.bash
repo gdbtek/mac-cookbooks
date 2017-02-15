@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-source "$(dirname "${BASH_SOURCE[0]}")/../../brew/attributes/default.bash"
+export DIALOG_DOWNLOAD_URL='https://fossies.org/linux/misc/dialog-1.3-20170131.tgz'
 
-export DIALOG_BREW_INSTALL_FOLDER_PATH="${BREW_INSTALL_FOLDER_PATH}"
+export DIALOG_INSTALL_FOLDER_PATH='/Volumes/Data/Tools/dialog'
