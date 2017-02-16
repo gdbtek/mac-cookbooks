@@ -3,7 +3,7 @@
 function install()
 {
     compileAndInstallFromSource "${SIEGE_DOWNLOAD_URL}" "${SIEGE_INSTALL_FOLDER_PATH}" "${SIEGE_INSTALL_FOLDER_PATH}/bin/siege" "${SUDO_USER}"
-    displayVersion "$(${SIEGE_INSTALL_FOLDER_PATH}/bin/siege --version 2>&1)"
+    displayVersion "$("${SIEGE_INSTALL_FOLDER_PATH}/bin/siege" --version 2>&1)"
 }
 
 function main()
