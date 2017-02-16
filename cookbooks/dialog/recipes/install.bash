@@ -2,7 +2,7 @@
 
 function install()
 {
-    compileAndInstallFromSource "${DIALOG_DOWNLOAD_URL}" "${DIALOG_INSTALL_FOLDER_PATH}" "${SUDO_USER}"
+    compileAndInstallFromSource "${DIALOG_DOWNLOAD_URL}" "${DIALOG_INSTALL_FOLDER_PATH}" "${DIALOG_INSTALL_FOLDER_PATH}/bin/dialog" "${SUDO_USER}"
     displayVersion "$(dialog --version)"
 }
 

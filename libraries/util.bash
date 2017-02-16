@@ -50,7 +50,8 @@ function compileAndInstallFromSource()
 {
     local -r downloadURL="${1}"
     local -r installFolderPath="${2}"
-    local -r user="${3}"
+    local -r installFileOrFolderBinPath="${3}"
+    local -r user="${4}"
 
     initializeFolder "${installFolderPath}"
 
@@ -62,7 +63,7 @@ function compileAndInstallFromSource()
     make
     make install
     chown -R "${user}:$(getUserGroupName "${user}")" "${installFolderPath}"
-    symlinkLocalBin "${installFolderPath}/bin"
+    symlinkLocalBin "${installFileOrFolderBinPath}"
     rm -f -r "${tempFolder}"
 }
 
@@ -260,15 +261,15 @@ function redirectOutputToLogFile()
 
 function symlinkLocalBin()
 {
-    local -r sourceBinFolder="${1}"
+    local -r sourceBinFileOrFolder="${1}"
 
     if [[ "$(isMacOperatingSystem)" = 'true' ]]
     then
         mkdir -p '/usr/local/bin'
 
-        if [[ -d "${sourceBinFolder}" ]]
+        if [[ -d "${sourceBinFileOrFolder}" ]]
         then
-            find "${sourceBinFolder}" -maxdepth 1 \( -type f -o -type l \) -perm -u+x -exec bash -c -e '
+            find "${sourceBinFileOrFolder}" -maxdepth 1 \( -type f -o -type l \) -perm -u+x -exec bash -c -e '
                 for file
                 do
                     fileType="$(stat -f "%HT" "${file}")"
@@ -286,18 +287,28 @@ function symlinkLocalBin()
                         fi
                     fi
                 done' bash '{}' \;
+        elif [[ -f "${sourceBinFileOrFolder}" ]]
+        then
+            ln -f -s "${sourceBinFileOrFolder}" "/usr/local/bin/$(basename "${sourceBinFileOrFolder}")"
+        else
+            fatal "\nFATAL : '${sourceBinFileOrFolder}' is not directory or file"
         fi
     elif [[ "$(isCentOSDistributor)" = 'true' || "$(isRedHatDistributor)" = 'true' || "$(isUbuntuDistributor)" = 'true' ]]
     then
         mkdir -p '/usr/local/bin'
 
-        if [[ -d "${sourceBinFolder}" ]]
+        if [[ -d "${sourceBinFileOrFolder}" ]]
         then
-            find "${sourceBinFolder}" -maxdepth 1 -xtype f -perm -u+x -exec bash -c -e '
+            find "${sourceBinFileOrFolder}" -maxdepth 1 -xtype f -perm -u+x -exec bash -c -e '
                 for file
                 do
                     ln -f -s "${file}" "/usr/local/bin/$(basename "${file}")"
                 done' bash '{}' \;
+        elif [[ -f "${sourceBinFileOrFolder}" ]]
+        then
+            ln -f -s "${sourceBinFileOrFolder}" "/usr/local/bin/$(basename "${sourceBinFileOrFolder}")"
+        else
+            fatal "\nFATAL : '${sourceBinFileOrFolder}' is not directory or file"
         fi
     else
         fatal '\nFATAL : only support CentOS, Mac, RedHat, Ubuntu OS'

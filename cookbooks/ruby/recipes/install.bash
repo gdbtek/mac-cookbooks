@@ -2,25 +2,7 @@
 
 function install()
 {
-    # Clean Up
-
-    initializeFolder "${RUBY_INSTALL_FOLDER_PATH}"
-
-    # Install
-
-    local -r tempFolder="$(getTemporaryFolder)"
-
-    unzipRemoteFile "${RUBY_DOWNLOAD_URL}" "${tempFolder}"
-    cd "${tempFolder}"
-    "${tempFolder}/configure" --prefix="${RUBY_INSTALL_FOLDER_PATH}"
-    make
-    make install
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${RUBY_INSTALL_FOLDER_PATH}"
-    symlinkLocalBin "${RUBY_INSTALL_FOLDER_PATH}/bin"
-    rm -f -r "${tempFolder}"
-
-    # Display Version
-
+    compileAndInstallFromSource "${RUBY_DOWNLOAD_URL}" "${RUBY_INSTALL_FOLDER_PATH}" "${RUBY_INSTALL_FOLDER_PATH}/bin" "${SUDO_USER}"
     displayVersion "$(ruby --version)"
 }
 
