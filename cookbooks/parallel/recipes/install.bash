@@ -16,6 +16,7 @@ function install()
     make
     make install
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PARALLEL_INSTALL_FOLDER_PATH}"
+    mkdir -p '/usr/local/bin'
     ln -f -s "${PARALLEL_INSTALL_FOLDER_PATH}/bin/parallel" '/usr/local/bin/parallel'
     rm -f -r "${tempFolder}"
 

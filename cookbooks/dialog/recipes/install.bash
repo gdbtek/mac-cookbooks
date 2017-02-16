@@ -2,25 +2,7 @@
 
 function install()
 {
-    # Clean Up
-
-    initializeFolder "${DIALOG_INSTALL_FOLDER_PATH}"
-
-    # Install
-
-    local -r tempFolder="$(getTemporaryFolder)"
-
-    unzipRemoteFile "${DIALOG_DOWNLOAD_URL}" "${tempFolder}"
-    cd "${tempFolder}"
-    "${tempFolder}/configure" --prefix="${DIALOG_INSTALL_FOLDER_PATH}"
-    make
-    make install
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${DIALOG_INSTALL_FOLDER_PATH}"
-    ln -f -s "${DIALOG_INSTALL_FOLDER_PATH}/bin/dialog" '/usr/local/bin/dialog'
-    rm -f -r "${tempFolder}"
-
-    # Display Version
-
+    compileAndInstallFromSource "${DIALOG_DOWNLOAD_URL}" "${DIALOG_INSTALL_FOLDER_PATH}" "${SUDO_USER}"
     displayVersion "$(dialog --version)"
 }
 
