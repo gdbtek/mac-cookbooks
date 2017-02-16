@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-export SHELL_CHECK_DOWNLOAD_URL='https://fossies.org/linux/misc/shellcheck-0.4.5.tar.gz'
+source "$(dirname "${BASH_SOURCE[0]}")/../../brew/attributes/default.bash"
 
-export SHELL_CHECK_INSTALL_FOLDER_PATH='/Volumes/Data/Tools/shell-check'
+export SHELL_CHECK_BREW_INSTALL_FOLDER_PATH="${BREW_INSTALL_FOLDER_PATH}"
