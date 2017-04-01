@@ -9,7 +9,7 @@ function install()
 
     # Install
 
-    unzipRemoteFile "${PORTER_DOWNLOAD_URL}" "${PORTER_INSTALL_FOLDER_PATH}/bin"
+    downloadFile "${PORTER_DOWNLOAD_URL}" "${PORTER_INSTALL_FOLDER_PATH}/bin/porter" 'true'
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PORTER_INSTALL_FOLDER_PATH}"
     ln -f -s "${PORTER_INSTALL_FOLDER_PATH}/bin/porter" '/usr/local/bin/porter'
 
