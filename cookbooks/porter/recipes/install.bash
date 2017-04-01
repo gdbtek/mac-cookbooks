@@ -11,6 +11,7 @@ function install()
 
     downloadFile "${PORTER_DOWNLOAD_URL}" "${PORTER_INSTALL_FOLDER_PATH}/bin/porter" 'true'
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${PORTER_INSTALL_FOLDER_PATH}"
+    chmod 755 "${PORTER_INSTALL_FOLDER_PATH}/bin/porter"
     ln -f -s "${PORTER_INSTALL_FOLDER_PATH}/bin/porter" '/usr/local/bin/porter'
 
     # Display Version
