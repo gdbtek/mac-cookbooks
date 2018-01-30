@@ -439,6 +439,8 @@ function getLoadBalancerDNSNameByName()
 {
     local -r loadBalancerName="${1}"
 
+    checkNonEmptyString "${loadBalancerName}" 'undefined load balancer name'
+
     aws elb describe-load-balancers \
         --load-balancer-name "${loadBalancerName}" \
         --output 'text' \
@@ -474,6 +476,30 @@ function isLoadBalancerFromStackName()
     else
         echo 'false'
     fi
+}
+
+function getLoadBalancerTag()
+{
+    local -r tags="${1}"
+    local -r key="${2}"
+
+    jq \
+        --compact-output \
+        --raw-output \
+        --arg jqKey "${key}" \
+        '.["TagDescriptions"][] | .["Tags"] | map(select(.["Key"] == $jqKey))[] | .["Value"] // empty' \
+    <<< "${tags}"
+}
+
+function getLoadBalancerTags()
+{
+    local -r loadBalancerName="${1}"
+
+    checkNonEmptyString "${loadBalancerName}" 'undefined load balancer name'
+
+    aws elb describe-tags \
+        --output 'json' \
+        --load-balancer-name "${loadBalancerName}"
 }
 
 ######################
