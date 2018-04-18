@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-export MONGODB_DOWNLOAD_URL='https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-3.6.3.tgz'
+export MONGODB_DOWNLOAD_URL='https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-3.6.4.tgz'
 
 export MONGODB_INSTALL_FOLDER_PATH='/Volumes/Data/Tools/mongodb'
 export MONGODB_INSTALL_DATA_FOLDER="${MONGODB_INSTALL_FOLDER_PATH}/data"
