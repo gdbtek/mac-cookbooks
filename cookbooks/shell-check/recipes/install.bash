@@ -12,12 +12,7 @@ function install()
 {
     initializeFolder "$(getUserHomeFolder "${SUDO_USER}")/Library/Caches/Homebrew"
 
-    su -l "${SUDO_USER}" -c "${SHELL_CHECK_BREW_INSTALL_FOLDER_PATH}/bin/brew install shellcheck"
-
-    if [[ "${SHELL_CHECK_BREW_INSTALL_FOLDER_PATH}" != '/usr/local' ]]
-    then
-        ln -f -s "${SHELL_CHECK_BREW_INSTALL_FOLDER_PATH}/bin/shellcheck" '/usr/local/bin/shellcheck'
-    fi
+    brew install shellcheck
 
     displayVersion "$(shellcheck -V)"
 }
