@@ -12,7 +12,12 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    brew install shellcheck
+    if [[ "$(existCommand 'shellcheck')" = 'true' ]]
+    then
+        brew reinstall shellcheck
+    else
+        brew install shellcheck
+    fi
 
     displayVersion "$(shellcheck -V)"
 }
