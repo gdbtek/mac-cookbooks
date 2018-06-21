@@ -14,6 +14,7 @@ function main()
     source "${appFolderPath}/../../../libraries/util.bash"
 
     checkRequireMacSystem
+    checkRequireRootUser
 
     header 'UNINSTALLING BREW'
 
