@@ -4,7 +4,7 @@ function uninstall()
 {
     if [[ "$(existCommand 'brew')" = 'true' ]]
     then
-        brew uninstall shellcheck
+        brew uninstall shellcheck || true
     fi
 }
 
