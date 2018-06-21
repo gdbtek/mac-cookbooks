@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-function install()
+function uninstall()
 {
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
     rm -f -r '/usr/local/var' '/usr/local/share'
@@ -17,9 +17,9 @@ function main()
 
     header 'UNINSTALLING BREW'
 
-    # Install
+    # Uninstall
 
-    install
+    uninstall
 }
 
 main "${@}"
