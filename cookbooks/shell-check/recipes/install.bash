@@ -10,7 +10,7 @@ function installDependencies()
 
 function install()
 {
-    initializeFolder "$(getUserHomeFolder "${SUDO_USER}")/Library/Caches/Homebrew"
+    initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
     brew install shellcheck
 
@@ -24,7 +24,6 @@ function main()
     source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
 
     checkRequireMacSystem
-    checkRequireRootUser
 
     header 'INSTALLING SHELL-CHECK'
 
