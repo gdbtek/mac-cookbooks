@@ -2,8 +2,7 @@
 
 function install()
 {
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
     rm -f -r '/usr/local/share'
 }
 
