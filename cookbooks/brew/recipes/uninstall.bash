@@ -2,9 +2,9 @@
 
 function install()
 {
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 
-    displayVersion "$(brew -v)"
+    rm -f -r '/usr/local/share'
 }
 
 function main()
@@ -15,7 +15,7 @@ function main()
 
     checkRequireMacSystem
 
-    header 'INSTALLING BREW'
+    header 'UNINSTALLING BREW'
 
     # Install
 
