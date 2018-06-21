@@ -19,6 +19,7 @@ function main()
     # Brew Application
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash"
+
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
 }
 
