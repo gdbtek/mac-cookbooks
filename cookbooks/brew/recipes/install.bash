@@ -24,7 +24,7 @@ function install()
     then
         # Update Global Brew
 
-        createAbsoluteBin 'brew' "${BREW_INSTALL_FOLDER_PATH}/bin/brew"
+        createAbsoluteLocalBin 'brew' "${BREW_INSTALL_FOLDER_PATH}/bin/brew"
 
         # Update Origin Brew
 
