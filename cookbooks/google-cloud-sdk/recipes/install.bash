@@ -9,15 +9,14 @@ function install()
 
     # Install
 
-    local -r tempFolder="$(getTemporaryFolder)"
-
-    unzipRemoteFile "${GOOGLE_CLOUD_SDK_DOWNLOAD_URL}" "${tempFolder}"
-    "${tempFolder}/install"
-    rm -f -r "${tempFolder}"
+    unzipRemoteFile "${GOOGLE_CLOUD_SDK_DOWNLOAD_URL}" "${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}"
+    "${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}/bin/gcloud" config set disable_usage_reporting true
+    "${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}/install.sh" --quiet
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}"
 
     # Display Version
 
-    #displayVersion "$("${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}/bin/aws" --version 2>&1)"
+    displayVersion "$("${GOOGLE_CLOUD_SDK_INSTALL_FOLDER_PATH}/bin/gcloud" --version)"
 }
 
 function main()
