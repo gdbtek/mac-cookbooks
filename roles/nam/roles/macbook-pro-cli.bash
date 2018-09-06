@@ -7,7 +7,6 @@ function main()
     # Non-Brew Applications
 
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
@@ -21,6 +20,7 @@ function main()
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash"
 
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
 }
 
