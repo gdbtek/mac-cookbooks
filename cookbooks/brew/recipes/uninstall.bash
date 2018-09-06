@@ -3,7 +3,18 @@
 function uninstall()
 {
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
-    initializeFolder '/usr/local'
+    rm -f -r '/usr/local/bin' \
+             '/usr/local/Caskroom' \
+             '/usr/local/Cellar' \
+             '/usr/local/etc' \
+             '/usr/local/Frameworks' \
+             '/usr/local/Homebrew' \
+             '/usr/local/include' \
+             '/usr/local/lib' \
+             '/usr/local/opt' \
+             '/usr/local/sbin' \
+             '/usr/local/share' \
+             '/usr/local/var'
 }
 
 function main()
