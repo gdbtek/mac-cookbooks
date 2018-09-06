@@ -7,6 +7,7 @@ function main()
     # Non-Brew Applications
 
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
