@@ -4,6 +4,13 @@ function main()
 {
     local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+    # Brew Application
+
+    "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash"
+
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
+
     # Non-Brew Applications
 
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
@@ -16,13 +23,6 @@ function main()
     "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/test-ssl/recipes/install.bash"
-
-    # Brew Application
-
-    "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash"
-
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
 }
 
 main "${@}"
