@@ -9,6 +9,7 @@ function main()
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/google-cloud-sdk/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
