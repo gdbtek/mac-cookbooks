@@ -19,7 +19,7 @@ function install()
         brew cask install 'chef/chef/chefdk'
     fi
 
-    displayVersion "$(java --version)"
+    displayVersion "$(knife --version)"
 }
 
 function main()
