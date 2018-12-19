@@ -3,7 +3,8 @@
 function uninstall()
 {
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
-    rm -f -r '/usr/local/bin' \
+    rm -f -r '/usr/local/.com.apple.installer.keep' \
+             '/usr/local/bin' \
              '/usr/local/Caskroom' \
              '/usr/local/Cellar' \
              '/usr/local/etc' \
