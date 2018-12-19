@@ -8,18 +8,15 @@ function main()
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash"
 
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/vagrant/recipes/install.bash"
 
     # Non-Brew Applications
 
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/google-cloud-sdk/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
