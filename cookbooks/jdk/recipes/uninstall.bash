@@ -5,6 +5,7 @@ function uninstall()
     if [[ "$(existCommand 'brew')" = 'true' ]]
     then
         brew cask uninstall "${JDK_VERSION}" || true
+        sudo rm -f -r /Library/Java/JavaVirtualMachines/openjdk-*.jdk
     fi
 }
 

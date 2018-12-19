@@ -12,6 +12,8 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
+    sudo rm -f -r /Library/Java/JavaVirtualMachines/openjdk-*.jdk
+
     if [[ "$(existCommand 'java')" = 'true' ]]
     then
         brew cask reinstall "${JDK_VERSION}"
