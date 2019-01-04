@@ -12,7 +12,14 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    brew install 'coreutils'
+    if [[ -d '/usr/local/opt/coreutils' ]]
+    then
+        brew reinstall 'shellcheck'
+    else
+        brew install 'shellcheck'
+    fi
+
+    displayVersion "$(brew list --versions 'coreutils')"
 }
 
 function main()
