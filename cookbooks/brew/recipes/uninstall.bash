@@ -2,7 +2,15 @@
 
 function uninstall()
 {
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
+    local -r confirm="${1}"
+
+    if [[ "${confirm}" = 'true' ]]
+    then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" < '/dev/null' || true
+    else
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
+    fi
+
     rm -f -r '/usr/local/.com.apple.installer.keep' \
              '/usr/local/bin' \
              '/usr/local/Caskroom' \
