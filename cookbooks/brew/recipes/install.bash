@@ -2,7 +2,7 @@
 
 function install()
 {
-    yes '' | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < '/dev/null'
+    yes '' | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     displayVersion "$(brew -v)"
 }
