@@ -24,6 +24,10 @@ function main()
     "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/test-ssl/recipes/install.bash"
+
+    # Finish
+
+    postUpMessage
 }
 
 main "${@}"

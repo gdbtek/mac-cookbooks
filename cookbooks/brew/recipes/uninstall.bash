@@ -28,6 +28,8 @@ function uninstall()
 
 function main()
 {
+    local -r confirm="${1}"
+
     local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     source "${appFolderPath}/../../../libraries/util.bash"
@@ -39,7 +41,7 @@ function main()
 
     # Uninstall
 
-    uninstall
+    uninstall "${confirm}"
 }
 
 main "${@}"
