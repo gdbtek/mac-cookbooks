@@ -8,9 +8,12 @@ function main()
 
     source "${appFolderPath}/../../../libraries/util.bash"
 
-    # Brew Application
+    # Brew
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash" 'true'
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/brew/recipes/install.bash"
+
+    # Brew Application
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/core-utils/recipes/install.bash"
