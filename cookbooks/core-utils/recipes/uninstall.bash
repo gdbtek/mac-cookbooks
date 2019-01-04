@@ -4,7 +4,7 @@ function uninstall()
 {
     if [[ "$(existCommand 'brew')" = 'true' ]]
     then
-        brew uninstall 'azure-cli' || true
+        brew uninstall 'coreutils' || true
     fi
 }
 
@@ -16,7 +16,7 @@ function main()
 
     checkRequireMacSystem
 
-    header 'UNINSTALLING AZURE-CLI'
+    header 'UNINSTALLING CORE-UTILS'
 
     # Uninstall
 

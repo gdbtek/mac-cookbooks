@@ -12,14 +12,7 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand 'az')" = 'true' ]]
-    then
-        brew reinstall 'azure-cli'
-    else
-        brew install 'azure-cli'
-    fi
-
-    displayVersion "$(az --version)"
+    brew install 'coreutils'
 }
 
 function main()
@@ -30,7 +23,7 @@ function main()
 
     checkRequireMacSystem
 
-    header 'INSTALLING AZURE-CLI'
+    header 'INSTALLING CORE-UTILS'
 
     # Install
 
