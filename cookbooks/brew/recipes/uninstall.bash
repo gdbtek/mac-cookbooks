@@ -6,7 +6,7 @@ function uninstall()
 
     if [[ "${confirm}" = 'true' ]]
     then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" < '/dev/null' || true
+        yes '' | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
     else
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" || true
     fi

@@ -4,6 +4,10 @@ function main()
 {
     local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+    # Load Libraries
+
+    source "${appFolderPath}/../../../libraries/util.bash"
+
     # Brew Application
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash" 'true'
