@@ -4,7 +4,7 @@ function installDependencies()
 {
     if [[ "$(existCommand 'brew')" = 'false' ]]
     then
-        "${APP_FOLDER_PATH}/../../brew/recipes/install.bash"
+        "${APP_FOLDER_PATH}/../../brew/recipes/install.bash" 'true'
     fi
 }
 
@@ -32,6 +32,7 @@ function main()
     source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
     checkRequireMacSystem
+    checkRequireNonRootUser
 
     header 'INSTALLING JDK'
 

@@ -17,6 +17,7 @@ function main()
     source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
     checkRequireMacSystem
+    checkRequireNonRootUser
 
     header 'UNINSTALLING JDK'
 

@@ -4,7 +4,7 @@ function installDependencies()
 {
     if [[ "$(existCommand 'brew')" = 'false' ]]
     then
-        "${APP_FOLDER_PATH}/../../brew/recipes/install.bash"
+        "${APP_FOLDER_PATH}/../../brew/recipes/install.bash" 'true'
     fi
 }
 
@@ -29,6 +29,7 @@ function main()
     source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
 
     checkRequireMacSystem
+    checkRequireNonRootUser
 
     header 'INSTALLING CHEF-CLIENT'
 

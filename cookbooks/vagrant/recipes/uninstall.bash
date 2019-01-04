@@ -15,6 +15,7 @@ function main()
     source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
 
     checkRequireMacSystem
+    checkRequireNonRootUser
 
     header 'INSTALLING VAGRANT'
 

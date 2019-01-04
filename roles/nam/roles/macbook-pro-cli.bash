@@ -8,10 +8,11 @@ function main()
 
     source "${appFolderPath}/../../../libraries/util.bash"
 
+    checkRequireRootUser
+
     # Brew
 
-    "${appFolderPath}/../../../cookbooks/brew/recipes/uninstall.bash" 'true'
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/brew/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
 
     # Brew Application
 
