@@ -14,9 +14,9 @@ function install()
 
     if [[ -d '/usr/local/opt/coreutils' ]]
     then
-        brew reinstall 'shellcheck'
+        brew reinstall 'coreutils'
     else
-        brew install 'shellcheck'
+        brew install 'coreutils'
     fi
 
     displayVersion "$(brew list --versions 'coreutils')"
