@@ -14,14 +14,17 @@ function main()
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
 
-    # Brew Application
+    # Brew Cask Applications
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
+
+    # Brew CLI Applications
+
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/core-utils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/cowsay/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/geo-ip/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/htop/recipes/install.bash"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/nmap/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/tree/recipes/install.bash"
