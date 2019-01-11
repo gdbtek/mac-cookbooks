@@ -19,7 +19,7 @@ function install()
         brew install 'azure-cli'
     fi
 
-    displayVersion "$(az --version)"
+    displayVersion "$(brew list --versions 'azure-cli')"
 }
 
 function main()

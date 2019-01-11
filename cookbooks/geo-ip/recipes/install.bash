@@ -12,14 +12,14 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand 'htop')" = 'true' ]]
+    if [[ "$(existCommand 'geoiplookup')" = 'true' ]]
     then
-        brew reinstall 'htop'
+        brew reinstall 'geoip'
     else
-        brew install 'htop'
+        brew install 'geoip'
     fi
 
-    displayVersion "$(brew list --versions 'htop')"
+    displayVersion "$(brew list --versions 'geoip')"
 }
 
 function main()
@@ -31,7 +31,7 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    header 'INSTALLING HTOP'
+    header 'INSTALLING GEO-IP'
 
     # Install
 

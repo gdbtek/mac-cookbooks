@@ -19,7 +19,7 @@ function install()
         brew install 'shellcheck'
     fi
 
-    displayVersion "$(shellcheck -V)"
+    displayVersion "$(brew list --versions 'shellcheck')"
 }
 
 function main()

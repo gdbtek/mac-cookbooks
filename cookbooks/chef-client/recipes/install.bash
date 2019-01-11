@@ -12,7 +12,7 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand 'java')" = 'true' ]]
+    if [[ "$(existCommand 'chef')" = 'true' ]]
     then
         brew cask reinstall 'chef/chef/chefdk'
     else

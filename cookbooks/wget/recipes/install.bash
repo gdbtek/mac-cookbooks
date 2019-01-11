@@ -12,14 +12,14 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand 'htop')" = 'true' ]]
+    if [[ "$(existCommand 'wget')" = 'true' ]]
     then
-        brew reinstall 'htop'
+        brew reinstall 'wget'
     else
-        brew install 'htop'
+        brew install 'wget'
     fi
 
-    displayVersion "$(brew list --versions 'htop')"
+    displayVersion "$(brew list --versions 'wget')"
 }
 
 function main()
@@ -31,7 +31,7 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    header 'INSTALLING HTOP'
+    header 'INSTALLING WGET'
 
     # Install
 
