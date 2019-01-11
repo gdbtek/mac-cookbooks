@@ -12,14 +12,14 @@ function install()
 {
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand 'vagrant')" = 'true' ]]
+    if [[ "$(existCommand 'nmap')" = 'true' ]]
     then
-        brew cask reinstall 'vagrant'
+        brew reinstall 'nmap'
     else
-        brew cask install 'vagrant'
+        brew install 'nmap'
     fi
 
-    displayVersion "$(vagrant --version)"
+    displayVersion "$(brew list --versions 'nmap')"
 }
 
 function main()
@@ -31,7 +31,7 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    header 'INSTALLING VAGRANT'
+    header 'INSTALLING NMAP'
 
     # Install
 
