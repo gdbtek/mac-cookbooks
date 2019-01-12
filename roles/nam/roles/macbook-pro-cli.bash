@@ -14,12 +14,7 @@ function main()
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
 
-    # Brew Cask Applications
-
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
-
-    # Brew CLI Applications
+    # Brew Applications
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/core-utils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/cowsay/recipes/install.bash"
@@ -29,6 +24,11 @@ function main()
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/tree/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/wget/recipes/install.bash"
+
+    # Brew Cask Applications
+
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
 
     # Non-Brew Applications
 
