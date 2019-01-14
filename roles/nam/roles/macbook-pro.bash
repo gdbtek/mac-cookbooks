@@ -22,6 +22,7 @@ function main()
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/geo-ip/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/htop/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/nmap/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/shell-check/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/tree/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/wget/recipes/install.bash"
@@ -38,7 +39,6 @@ function main()
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/parallel/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/test-ssl/recipes/install.bash"
 
