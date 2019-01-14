@@ -16,9 +16,9 @@ function install()
 
     if [[ "$(existCommand 'java')" = 'true' ]]
     then
-        brew cask reinstall "${JDK_VERSION}"
+        brew cask reinstall 'java'
     else
-        brew cask install "${JDK_VERSION}"
+        brew cask install 'java'
     fi
 
     displayVersion "$(java --version)"
@@ -29,7 +29,6 @@ function main()
     APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
-    source "${APP_FOLDER_PATH}/../attributes/default.bash"
 
     checkRequireMacSystem
     checkRequireNonRootUser
