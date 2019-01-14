@@ -18,6 +18,7 @@ function main()
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/core-utils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/cowsay/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/geo-ip/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/htop/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/nmap/recipes/install.bash"
@@ -33,7 +34,6 @@ function main()
     # Non-Brew Applications
 
     "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
