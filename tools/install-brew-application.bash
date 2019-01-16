@@ -13,17 +13,21 @@ function displayUsage()
     echo    "  ${scriptName}"
     echo    '    --help'
     echo    '    --application-name    <APPLICATION_NAME>'
+    echo    '    --cask-application    <CASK_APPLICATION>'
     echo    '    --command             <COMMAND>'
     echo -e '\033[1;35m'
     echo    'DESCRIPTION :'
     echo    '  --help                Help page (optional)'
     echo    '  --application-name    Application name to be installed (require)'
+    echo    '  --cask-application    If application is cask application or not (optional)'
+    echo    "                        Value could be 'true' or 'false'. Defualt to 'false'"
     echo    '  --command             Command of the application (optional)'
     echo    '                        Default to application name'
     echo -e '\033[1;36m'
     echo    'EXAMPLES :'
     echo    "  ./${scriptName} --help"
     echo    "  ./${scriptName} --application-name 'geoip' --command 'geoiplookup'"
+    echo    "  ./${scriptName} --application-name 'java' --cask-application 'true'"
     echo    "  ./${scriptName} --application-name 'tree'"
     echo -e '\033[0m'
 
@@ -41,23 +45,34 @@ function installDependencies()
 function install()
 {
     local -r applicationName="${1}"
-    local command="${2}"
-
-    if [[ "$(isEmptyString "${command}")" = 'true' ]]
-    then
-        command="${applicationName}"
-    fi
+    local -r caskApplication="${2}"
+    local -r command="${3}"
 
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
     if [[ "$(existCommand "${command}")" = 'true' || -d "/usr/local/opt/${applicationName}" ]]
     then
-        brew reinstall "${applicationName}"
+        if [[ "${caskApplication}" = 'true' ]]
+        then
+            brew cask reinstall "${applicationName}"
+        else
+            brew reinstall "${applicationName}"
+        fi
     else
-        brew install "${applicationName}"
+        if [[ "${caskApplication}" = 'true' ]]
+        then
+            brew cask install "${applicationName}"
+        else
+            brew install "${applicationName}"
+        fi
     fi
 
-    displayVersion "$(brew list --versions "${applicationName}")"
+    if [[ "${caskApplication}" = 'true' ]]
+    then
+        displayVersion "$(brew cask list --versions "${applicationName}")"
+    else
+        displayVersion "$(brew list --versions "${applicationName}")"
+    fi
 }
 
 ########
@@ -92,6 +107,17 @@ function main()
 
                 ;;
 
+            --cask-application)
+                shift
+
+                if [[ "${#}" -gt '0' ]]
+                then
+                    local caskApplication=''
+                    caskApplication="$(trimString "${1}")"
+                fi
+
+                ;;
+
             --command)
                 shift
 
@@ -116,18 +142,32 @@ function main()
         displayUsage 0
     fi
 
+    # Default Values
+
+    if [[ "$(isEmptyString "${caskApplication}")" = 'true' ]]
+    then
+        caskApplication='false'
+    fi
+
+    if [[ "$(isEmptyString "${command}")" = 'true' ]]
+    then
+        command="${applicationName}"
+    fi
+
     # Validations
 
     checkRequireMacSystem
     checkRequireNonRootUser
+
     checkNonEmptyString "${applicationName}" 'undefined application name'
+    checkTrueFalseString "${caskApplication}"
 
     # Install
 
     header "INSTALLING $(tr '[:lower:]' '[:upper:]' <<< "${applicationName}")"
 
     installDependencies
-    install "${applicationName}" "${command}"
+    install "${applicationName}" "${caskApplication}" "${command}"
 }
 
 main "${@}"

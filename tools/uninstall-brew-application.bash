@@ -13,13 +13,17 @@ function displayUsage()
     echo    "  ${scriptName}"
     echo    '    --help'
     echo    '    --application-name    <APPLICATION_NAME>'
+    echo    '    --cask-application    <CASK_APPLICATION>'
     echo -e '\033[1;35m'
     echo    'DESCRIPTION :'
     echo    '  --help                Help page (optional)'
     echo    '  --application-name    Application name to be installed (require)'
+    echo    '  --cask-application    If application is cask application or not (optional)'
+    echo    "                        Value could be 'true' or 'false'. Defualt to 'false'"
     echo -e '\033[1;36m'
     echo    'EXAMPLES :'
     echo    "  ./${scriptName} --help"
+    echo    "  ./${scriptName} --application-name 'java' --cask-application 'true'"
     echo    "  ./${scriptName} --application-name 'tree'"
     echo -e '\033[0m'
 
@@ -29,10 +33,16 @@ function displayUsage()
 function uninstall()
 {
     local -r applicationName="${1}"
+    local -r caskApplication="${2}"
 
     checkExistCommand 'brew'
 
-    brew uninstall "${applicationName}" || true
+    if [[ "${caskApplication}" = 'true' ]]
+    then
+        brew cask uninstall "${applicationName}" || true
+    else
+        brew uninstall "${applicationName}" || true
+    fi
 }
 
 ########
@@ -65,6 +75,17 @@ function main()
 
                 ;;
 
+            --cask-application)
+                shift
+
+                if [[ "${#}" -gt '0' ]]
+                then
+                    local caskApplication=''
+                    caskApplication="$(trimString "${1}")"
+                fi
+
+                ;;
+
             *)
                 shift
                 ;;
@@ -78,17 +99,27 @@ function main()
         displayUsage 0
     fi
 
+    # Default Values
+
+    if [[ "$(isEmptyString "${caskApplication}")" = 'true' ]]
+    then
+        caskApplication='false'
+    fi
+
     # Validations
 
     checkRequireMacSystem
     checkRequireNonRootUser
+
     checkNonEmptyString "${applicationName}" 'undefined application name'
+    checkTrueFalseString "${caskApplication}"
 
     # Install
 
     header "UNINSTALLING $(tr '[:lower:]' '[:upper:]' <<< "${applicationName}")"
 
-    uninstall "${applicationName}"
+    installDependencies
+    uninstall "${applicationName}" "${caskApplication}"
 }
 
 main "${@}"

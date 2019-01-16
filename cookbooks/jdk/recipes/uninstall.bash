@@ -1,29 +1,4 @@
 #!/bin/bash -e
 
-function uninstall()
-{
-    if [[ "$(existCommand 'brew')" = 'true' ]]
-    then
-        brew cask uninstall 'java' || true
-        sudo rm -f -r '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk
-    fi
-}
-
-function main()
-{
-    APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    source "${APP_FOLDER_PATH}/../../../libraries/util.bash"
-    source "${APP_FOLDER_PATH}/../attributes/default.bash"
-
-    checkRequireMacSystem
-    checkRequireNonRootUser
-
-    header 'UNINSTALLING JDK'
-
-    # Uninstall
-
-    uninstall
-}
-
-main "${@}"
+"$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-application.bash" --application-name 'java' --cask-application 'true'
+sudo rm -f -r '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk
