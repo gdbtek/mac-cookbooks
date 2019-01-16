@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-"$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-application.bash" 'azure-cli' 'az'
+"$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-application.bash" --application-name 'azure-cli' --command 'az'

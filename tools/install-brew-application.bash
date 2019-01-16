@@ -1,5 +1,35 @@
 #!/bin/bash -e
 
+##################
+# IMPLEMENTATION #
+##################
+
+function displayUsage()
+{
+    local -r scriptName="$(basename "${BASH_SOURCE[0]}")"
+
+    echo -e '\033[1;33m'
+    echo    'SYNOPSIS :'
+    echo    "  ${scriptName}"
+    echo    '    --help'
+    echo    '    --application-name    <APPLICATION_NAME>'
+    echo    '    --command             <COMMAND>'
+    echo -e '\033[1;35m'
+    echo    'DESCRIPTION :'
+    echo    '  --help                Help page (optional)'
+    echo    '  --application-name    Application name (require)'
+    echo    '  --command             Command of the application (optional)'
+    echo    '                        Default to application name'
+    echo -e '\033[1;36m'
+    echo    'EXAMPLES :'
+    echo    "  ./${scriptName} --help"
+    echo    "  ./${scriptName} --application-name 'geoip' --command 'geoiplookup'"
+    echo    "  ./${scriptName} --application-name 'tree'"
+    echo -e '\033[0m'
+
+    exit "${1}"
+}
+
 function installDependencies()
 {
     if [[ "$(existCommand 'brew')" = 'false' ]]
@@ -11,16 +41,16 @@ function installDependencies()
 function install()
 {
     local -r applicationName="${1}"
-    local commandName="${2}"
+    local command="${2}"
 
-    if [[ "$(isEmptyString "${commandName}")" = 'true' ]]
+    if [[ "$(isEmptyString "${command}")" = 'true' ]]
     then
-        commandName="${applicationName}"
+        command="${applicationName}"
     fi
 
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand "${commandName}")" = 'true' || -d "/usr/local/opt/${applicationName}" ]]
+    if [[ "$(existCommand "${command}")" = 'true' || -d "/usr/local/opt/${applicationName}" ]]
     then
         brew reinstall "${applicationName}"
     else
@@ -30,25 +60,74 @@ function install()
     displayVersion "$(brew list --versions "${applicationName}")"
 }
 
+########
+# MAIN #
+########
+
 function main()
 {
-    local -r applicationName="${1}"
-    local -r commandName="${2}"
-
     APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     source "${APP_FOLDER_PATH}/../libraries/util.bash"
+
+    # Parsing Command Arguments
+
+    local -r optCount="${#}"
+
+    while [[ "${#}" -gt '0' ]]
+    do
+        case "${1}" in
+            --help)
+                displayUsage 0
+                ;;
+
+            --application-name)
+                shift
+
+                if [[ "${#}" -gt '0' ]]
+                then
+                    local applicationName=''
+                    applicationName="$(trimString "${1}")"
+                fi
+
+                ;;
+
+            --command)
+                shift
+
+                if [[ "${#}" -gt '0' ]]
+                then
+                    local command=''
+                    command="$(trimString "${1}")"
+                fi
+
+                ;;
+
+            *)
+                shift
+                ;;
+        esac
+    done
+
+    # Validate Opt
+
+    if [[ "${optCount}" -lt '1' ]]
+    then
+        displayUsage 0
+    fi
+
+    # Validations
 
     checkRequireMacSystem
     checkRequireNonRootUser
     checkNonEmptyString "${applicationName}" 'undefined application name'
 
-    header "INSTALLING $(tr '[:lower:]' '[:upper:]' <<< "${applicationName}")"
-
     # Install
 
+    header "INSTALLING $(tr '[:lower:]' '[:upper:]' <<< "${applicationName}")"
+
     installDependencies
-    install "${applicationName}" "${commandName}"
+    install "${applicationName}" "${command}"
 }
 
 main "${@}"
