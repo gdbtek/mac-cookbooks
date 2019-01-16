@@ -17,7 +17,7 @@ function displayUsage()
     echo -e '\033[1;35m'
     echo    'DESCRIPTION :'
     echo    '  --help                Help page (optional)'
-    echo    '  --application-name    Application name to be installed (require)'
+    echo    '  --application-name    Application name to be uninstalled (require)'
     echo    '  --cask-application    If application is cask application or not (optional)'
     echo    "                        Value could be 'true' or 'false'. Defualt to 'false'"
     echo -e '\033[1;36m'
@@ -118,7 +118,6 @@ function main()
 
     header "UNINSTALLING $(tr '[:lower:]' '[:upper:]' <<< "${applicationName}")"
 
-    installDependencies
     uninstall "${applicationName}" "${caskApplication}"
 }
 
