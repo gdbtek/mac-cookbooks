@@ -17,7 +17,7 @@ function displayUsage()
     echo -e '\033[1;35m'
     echo    'DESCRIPTION :'
     echo    '  --help                Help page (optional)'
-    echo    '  --application-name    Application name (require)'
+    echo    '  --application-name    Application name to be installed (require)'
     echo    '  --command             Command of the application (optional)'
     echo    '                        Default to application name'
     echo -e '\033[1;36m'
