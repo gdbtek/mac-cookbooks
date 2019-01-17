@@ -55,7 +55,9 @@ function main()
         'wget'
     )
 
-    "${appFolderPath}/../../../tools/install-brew-applications.bash" "${caskPackageNames}" "${packageNames}"
+    "${appFolderPath}/../../../tools/install-brew-applications.bash" \
+        --cask-package-names "${caskPackageNames}" \
+        --package-names "${packageNames}"
 
     # Finish
 
