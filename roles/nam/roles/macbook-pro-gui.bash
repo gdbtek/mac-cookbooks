@@ -18,6 +18,7 @@ function main()
     "${appFolderPath}/../../../cookbooks/dropbox/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/google-backup-and-sync/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/google-chrome/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/iterm/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/slack/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/tower/recipes/install.bash"
     "${appFolderPath}/../../../cookbooks/transmit/recipes/install.bash"
