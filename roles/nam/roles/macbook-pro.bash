@@ -22,7 +22,7 @@ function main()
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/geo-ip/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/hping/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/htop/recipes/install.bash"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/moreutils/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/more-utils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/mtr/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/netcat/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/nmap/recipes/install.bash"
