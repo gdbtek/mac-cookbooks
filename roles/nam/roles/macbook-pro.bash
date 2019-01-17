@@ -33,7 +33,7 @@ function main()
 
     # Brew Cask Applications
 
-    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-client/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chef-dk/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/jdk/recipes/install.bash"
 
     # Non-Brew Applications
