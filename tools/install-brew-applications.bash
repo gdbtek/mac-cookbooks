@@ -43,6 +43,7 @@ function install()
     local -r caskPackageNames=($(sortUniqArray "${1}"))
     local -r packageNames=($(sortUniqArray "${2}"))
 
+    brew update
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
     # Cask Packages
@@ -68,6 +69,11 @@ function install()
         brew reinstall "${packageName}"
         displayVersion "$(brew list --versions "${packageName}")"
     done
+
+    # Clean Up
+
+    brew cleanup
+    brew doctor
 }
 
 ########

@@ -56,8 +56,8 @@ function main()
     )
 
     "${appFolderPath}/../../../tools/install-brew-applications.bash" \
-        --cask-package-names "${caskPackageNames}" \
-        --package-names "${packageNames}"
+        --cask-package-names "${caskPackageNames[@]}" \
+        --package-names "${packageNames[@]}"
 
     # Finish
 
