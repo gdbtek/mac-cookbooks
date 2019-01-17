@@ -17,6 +17,7 @@ function main()
     # Brew Applications
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/ack/recipes/install.bash"
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/azure-cli/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/ccat/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/coreutils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/cowsay/recipes/install.bash"
