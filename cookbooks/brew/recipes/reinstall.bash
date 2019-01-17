@@ -9,10 +9,10 @@ function main()
     source "${appFolderPath}/../../../libraries/util.bash"
 
     checkRequireMacSystem
-    checkRequireRootUser
+    checkRequireNonRootUser
 
     "${appFolderPath}/uninstall.bash" "${confirm}"
-    sudo -u "${SUDO_USER}" "${appFolderPath}/install.bash" "${confirm}"
+    "${appFolderPath}/install.bash" "${confirm}"
 }
 
 main "${@}"

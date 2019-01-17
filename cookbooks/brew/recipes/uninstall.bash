@@ -23,8 +23,9 @@ function uninstall()
         '/usr/local/lib' \
         '/usr/local/opt' \
         '/usr/local/sbin' \
-        '/usr/local/share' \
         '/usr/local/var'
+
+    sudo rm -f -r '/usr/local/share'
 }
 
 function main()
@@ -36,7 +37,7 @@ function main()
     source "${appFolderPath}/../../../libraries/util.bash"
 
     checkRequireMacSystem
-    checkRequireRootUser
+    checkRequireNonRootUser
 
     header 'UNINSTALLING BREW'
 
