@@ -50,27 +50,24 @@ function install()
 
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    if [[ "$(existCommand "${command}")" = 'true' || -d "/usr/local/opt/${applicationName}" ]]
+    if [[ "${caskApplication}" = 'true' ]]
     then
-        if [[ "${caskApplication}" = 'true' ]]
+        if [[ -d "/usr/local/Caskroom/${applicationName}" ]]
         then
             brew cask reinstall "${applicationName}"
         else
-            brew reinstall "${applicationName}"
-        fi
-    else
-        if [[ "${caskApplication}" = 'true' ]]
-        then
             brew cask install "${applicationName}"
+        fi
+
+        displayVersion "$(brew cask list --versions "${applicationName}")"
+    else
+        if [[ "$(existCommand "${command}")" = 'true' || -d "/usr/local/opt/${applicationName}" ]]
+        then
+            brew reinstall "${applicationName}"
         else
             brew install "${applicationName}"
         fi
-    fi
 
-    if [[ "${caskApplication}" = 'true' ]]
-    then
-        displayVersion "$(brew cask list --versions "${applicationName}")"
-    else
         displayVersion "$(brew list --versions "${applicationName}")"
     fi
 }
