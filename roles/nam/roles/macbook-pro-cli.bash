@@ -14,6 +14,16 @@ function main()
 
     "${appFolderPath}/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
 
+    # Non-Brew Applications
+
+    "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
+    "${appFolderPath}/../../../cookbooks/test-ssl/recipes/install.bash"
+
     # Brew Applications
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/ack/recipes/install.bash"
@@ -40,16 +50,6 @@ function main()
 
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/chefdk/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/java/recipes/install.bash"
-
-    # Non-Brew Applications
-
-    "${appFolderPath}/../../../cookbooks/aws-cli/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/go-lang/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/jq/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/node-js/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/packer/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/terraform/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/test-ssl/recipes/install.bash"
 
     # Finish
 
