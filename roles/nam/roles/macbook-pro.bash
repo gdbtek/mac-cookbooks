@@ -16,6 +16,7 @@ function main()
 
     # Brew Applications
 
+    sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/ack/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/core-utils/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/cowsay/recipes/install.bash"
     sudo -u "${SUDO_USER}" "${appFolderPath}/../../../cookbooks/dialog/recipes/install.bash"
