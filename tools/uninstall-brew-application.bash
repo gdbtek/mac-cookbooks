@@ -43,6 +43,8 @@ function uninstall()
     else
         brew uninstall "${applicationName}" || true
     fi
+
+    brew cleanup
 }
 
 ########
