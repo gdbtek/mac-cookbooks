@@ -53,7 +53,7 @@ function installBrewPackage()
 
         if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
         then
-            "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash"
+            sudo "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash"
         fi
 
         # Install
@@ -65,7 +65,7 @@ function installBrewPackage()
 
         if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash" ]]
         then
-            "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash"
+            sudo "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash"
         fi
     done
 }
