@@ -7,7 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    npm install -g 'npm'
+    npm install -g 'npm@latest'
 }
 
 main "${@}"
