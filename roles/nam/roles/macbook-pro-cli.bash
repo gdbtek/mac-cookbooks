@@ -8,6 +8,7 @@ function main()
         'chef/chef/chefdk'
         'google-cloud-sdk'
         'java'
+        'vagrant'
     )
 
     local -r packageNames=(
@@ -38,7 +39,6 @@ function main()
         'testssl'
         'tmux'
         'tree'
-        'vagrant'
         'vault'
         'wget'
     )
