@@ -12,7 +12,6 @@ function main()
         'google-backup-and-sync'
         'google-chrome'
         'iterm2'
-        'slack'
         'tower'
         'transmit'
         'visual-studio-code'
