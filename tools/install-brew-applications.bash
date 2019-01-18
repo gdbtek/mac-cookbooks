@@ -92,7 +92,7 @@ function install()
     header 'CLEANING UP BREW'
 
     brew cleanup
-    brew doctor
+    brew doctor || true
 }
 
 ########
