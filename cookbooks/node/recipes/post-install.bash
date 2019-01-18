@@ -7,7 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    npm install -g 'npm@latest'
+    sudo -u "${SUDO_USER}" npm install -g 'npm@latest'
 }
 
 main "${@}"
