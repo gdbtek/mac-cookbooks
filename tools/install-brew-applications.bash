@@ -34,7 +34,7 @@ function installDependencies()
 {
     if [[ "$(existCommand 'brew')" = 'false' ]]
     then
-        "${APP_FOLDER_PATH}/../cookbooks/brew/recipes/install.bash" 'true'
+        "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/brew/recipes/install.bash" 'true'
     fi
 }
 
@@ -51,21 +51,21 @@ function installBrewPackage()
 
         # Pre Install
 
-        if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
+        if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
         then
-            sudo "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash"
+            sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash"
         fi
 
         # Install
 
-        brew "${packageType[@]}" reinstall "${packageName}"
-        displayVersion "$(brew list --versions "${packageName}")"
+        brew ${packageType[@]} reinstall "${packageName}"
+        displayVersion "$(brew ${packageType[@]} list --versions "${packageName}")"
 
         # Post Install
 
-        if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash" ]]
+        if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash" ]]
         then
-            sudo "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash"
+            sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash"
         fi
     done
 }
@@ -101,9 +101,7 @@ function install()
 
 function main()
 {
-    APP_FOLDER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    source "${APP_FOLDER_PATH}/../libraries/util.bash"
+    source "$(dirname "${BASH_SOURCE[0]}")/../libraries/util.bash"
 
     # Parsing Command Arguments
 

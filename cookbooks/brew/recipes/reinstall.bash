@@ -4,15 +4,13 @@ function main()
 {
     local -r confirm="${1}"
 
-    local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    source "${appFolderPath}/../../../libraries/util.bash"
+    source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    sudo "${appFolderPath}/uninstall.bash" "${confirm}"
-    "${appFolderPath}/install.bash" "${confirm}"
+    sudo "$(dirname "${BASH_SOURCE[0]}")/uninstall.bash" "${confirm}"
+    "$(dirname "${BASH_SOURCE[0]}")/install.bash" "${confirm}"
 }
 
 main "${@}"
