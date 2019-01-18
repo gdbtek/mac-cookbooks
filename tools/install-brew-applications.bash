@@ -38,10 +38,42 @@ function installDependencies()
     fi
 }
 
+function installBrewPackage()
+{
+    local -r packageType=("${1}")
+    local -r packageNames=($(sortUniqArray "${@:2}"))
+
+    local packageName=''
+
+    for packageName in "${packageNames[@]}"
+    do
+        header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+
+        # Pre Install
+
+        if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
+        then
+            "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/pre-install.bash"
+        fi
+
+        # Install
+
+        brew "${packageType[@]}" reinstall "${packageName}"
+        displayVersion "$(brew list --versions "${packageName}")"
+
+        # Post Install
+
+        if [[ -f "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash" ]]
+        then
+            "${APP_FOLDER_PATH}/../cookbooks/${packageName}/recipes/post-install.bash"
+        fi
+    done
+}
+
 function install()
 {
-    local -r caskPackageNames=($(sortUniqArray "${1}"))
-    local -r packageNames=($(sortUniqArray "${2}"))
+    local -r caskPackageNames="${1}"
+    local -r packageNames="${2}"
 
     # Update Brew
 
@@ -50,29 +82,10 @@ function install()
     brew update
     initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
 
-    # Cask Packages
+    # Install Packages
 
-    local caskPackageName=''
-
-    for caskPackageName in "${caskPackageNames[@]}"
-    do
-        header "INSTALLING CASK PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${caskPackageName}")"
-
-        brew cask reinstall "${caskPackageName}"
-        displayVersion "$(brew list --versions "${caskPackageName}")"
-    done
-
-    # Packages
-
-    local packageName=''
-
-    for packageName in "${packageNames[@]}"
-    do
-        header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
-
-        brew reinstall "${packageName}"
-        displayVersion "$(brew list --versions "${packageName}")"
-    done
+    installBrewPackage 'cask' "${caskPackageNames}"
+    installBrewPackage '' "${packageNames}"
 
     # Clean Up
 
