@@ -11,7 +11,7 @@ function main()
         'dropbox'
         'google-backup-and-sync'
         'google-chrome'
-        'iterm'
+        'iterm2'
         'slack'
         'tower'
         'transmit'
