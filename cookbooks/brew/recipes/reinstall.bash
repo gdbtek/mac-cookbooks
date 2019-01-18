@@ -11,7 +11,7 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    "${appFolderPath}/uninstall.bash" "${confirm}"
+    sudo "${appFolderPath}/uninstall.bash" "${confirm}"
     "${appFolderPath}/install.bash" "${confirm}"
 }
 
