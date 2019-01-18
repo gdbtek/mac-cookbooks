@@ -9,6 +9,7 @@ function main()
         'beyond-compare'
         'blue-jeans'
         'dropbox'
+        'goofy'
         'google-backup-and-sync'
         'google-chrome'
         'iterm2'
