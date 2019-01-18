@@ -2,30 +2,31 @@
 
 function main()
 {
-    local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    # Packages
 
-    # Load Libraries
+    local -r caskPackageNames=(
+        '1password'
+        'beyond-compare'
+        'blue-jeans'
+        'dropbox'
+        'google-backup-and-sync'
+        'google-chrome'
+        'iterm'
+        'slack'
+        'tower'
+        'transmit'
+        'visual-studio-code'
+        'vmware-fusion'
+    )
 
-    source "${appFolderPath}/../../../libraries/util.bash"
+    # Install
+
+    source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
     checkRequireNonRootUser
 
-    # Brew Cask Applications
-
-    "${appFolderPath}/../../../cookbooks/1password/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/beyond-compare/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/blue-jeans/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/dropbox/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/google-backup-and-sync/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/google-chrome/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/iterm/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/slack/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/tower/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/transmit/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/visual-studio-code/recipes/install.bash"
-    "${appFolderPath}/../../../cookbooks/vmware-fusion/recipes/install.bash"
-
-    # Finish
+    "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
+        --cask-package-names "$(arrayToString "${caskPackageNames[@]}")"
 
     postUpMessage
 }

@@ -2,22 +2,11 @@
 
 function main()
 {
-    local -r appFolderPath="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    # Load Libraries
-
-    source "${appFolderPath}/../../../libraries/util.bash"
-
-    checkRequireNonRootUser
-
-    # Brew
-
-    "${appFolderPath}/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
-
     # Packages
 
     local -r caskPackageNames=(
         'chef/chef/chefdk'
+        'google-cloud-sdk'
         'java'
     )
 
@@ -32,7 +21,6 @@ function main()
         'geoip'
         'glances'
         'go'
-        'google-cloud-sdk'
         'hping'
         'htop'
         'jq'
@@ -55,11 +43,16 @@ function main()
         'wget'
     )
 
-    "${appFolderPath}/../../../tools/install-brew-applications.bash" \
-        --cask-package-names "${caskPackageNames[@]}" \
-        --package-names "${packageNames[@]}"
+    # Install
 
-    # Finish
+    source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
+
+    checkRequireNonRootUser
+
+    "$(dirname "${BASH_SOURCE[0]}")/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
+    "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
+        --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
+        --package-names "$(arrayToString "${packageNames[@]}")"
 
     postUpMessage
 }
