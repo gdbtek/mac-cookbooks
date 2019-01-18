@@ -79,10 +79,10 @@ function install()
 
     # Update Brew
 
-    header 'UPDATING BREW'
+    header 'UPDATING AND UPGRADING BREW'
 
     brew update
-    initializeFolder "$(getCurrentUserHomeFolder)/Library/Caches/Homebrew"
+    brew upgrade
 
     # Install Packages
 
