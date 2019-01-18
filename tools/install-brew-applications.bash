@@ -53,6 +53,7 @@ function installBrewPackage()
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
         then
+            header "PRE-INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash"
         fi
 
@@ -65,6 +66,7 @@ function installBrewPackage()
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash" ]]
         then
+            header "POST-INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash"
         fi
     done
