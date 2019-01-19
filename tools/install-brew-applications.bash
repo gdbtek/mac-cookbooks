@@ -129,8 +129,7 @@ function main()
 
                 if [[ "${#}" -gt '0' ]]
                 then
-                    local caskPackageNames=''
-                    caskPackageNames="$(replaceString "${1}" ',' ' ')"
+                    local caskPackageNames="${1}"
                 fi
 
                 ;;
@@ -140,8 +139,7 @@ function main()
 
                 if [[ "${#}" -gt '0' ]]
                 then
-                    local packageNames=''
-                    packageNames="$(replaceString "${1}" ',' ' ')"
+                    local packageNames="${1}"
                 fi
 
                 ;;
