@@ -41,11 +41,19 @@ function installDependencies()
 function installBrewPackage()
 {
     local -r packageType=("${1}")
-    local -r packageNames=($(sortUniqArray "${@:2}"))
+    local -r packageNames="${2}"
+
+    # Get App Name List
+
+    local packageNameList=()
+
+    IFS=$',' read -a packageNameList <<< "${packageNames}"
+
+    # Each Package Name
 
     local packageName=''
 
-    for packageName in "${packageNames[@]}"
+    for packageName in "${packageNameList[@]}"
     do
         header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
