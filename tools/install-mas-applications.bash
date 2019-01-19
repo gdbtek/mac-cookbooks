@@ -37,11 +37,19 @@ function installDependencies()
 
 function install()
 {
-    local -r appNames=($(sortUniqArray "${1}"))
+    local -r appNames="${1}"
+
+    # Get App Name List
+
+    local appNameList=()
+
+    IFS=$',' read -a appNameList <<< "${appNames}"
+
+    # Each App Name
 
     local appName=''
 
-    for appName in "${appNames[@]}"
+    for appName in "${appNameList[@]}"
     do
         header "INSTALLING STORE APP $(tr '[:lower:]' '[:upper:]' <<< "${appName}")"
         mas lucky "${appName}"
@@ -72,8 +80,7 @@ function main()
 
                 if [[ "${#}" -gt '0' ]]
                 then
-                    local appNames=''
-                    appNames="$(replaceString "${1}" ',' ' ')"
+                    local appNames="${1}"
                 fi
 
                 ;;
