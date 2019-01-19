@@ -8,6 +8,7 @@ function main()
         '1password'
         'beyond-compare'
         'blue-jeans'
+        'cakebrew'
         'dropbox'
         'goofy'
         'google-backup-and-sync'
