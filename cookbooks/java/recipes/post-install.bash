@@ -7,9 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    local -r openJDKFolderPath="$(ls -1 -d -t '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk | head -1)"
-
-    checkExistFolder "${openJDKFolderPath}"
+    checkExistFolder "$(ls -1 -d -t '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk | head -1)"
 
     local -r javaHomeConfig='export JAVA_HOME="$(ls -1 -d -t '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk | head -1)"'
 
