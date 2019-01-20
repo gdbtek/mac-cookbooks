@@ -7,9 +7,9 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    checkExistFolder "$(ls -1 -d -t '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk | head -1)"
+    checkExistFolder "$(ls -1 -d -t '/Library/Java/JavaVirtualMachines/'openjdk-*.jdk | head -1)/Contents/Home"
 
-    local -r javaHomeConfig='export JAVA_HOME="$(ls -1 -d -t '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk | head -1)"'
+    local -r javaHomeConfig='export JAVA_HOME="$(ls -1 -d -t '/Library/Java/JavaVirtualMachines/'openjdk-*.jdk | head -1)/Contents/Home"'
 
     appendToFileIfNotFound '/etc/profile' "$(stringToSearchPattern "${javaHomeConfig}")" "${javaHomeConfig}" 'false' 'false' 'true'
 }
