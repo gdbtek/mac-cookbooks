@@ -11,6 +11,7 @@ function install()
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
+    initializeFolder "$(brew --cache)"
     displayVersion "$(brew -v)"
 }
 
