@@ -12,7 +12,7 @@ function main()
     local -r javaHomeConfig="export JAVA_HOME=\"\$(ls -1 -d -t '/Library/Java/JavaVirtualMachines/'openjdk-*.jdk | head -1)/Contents/Home\""
 
     appendToFileIfNotFound '/etc/profile' "${javaHomeConfig}" "${javaHomeConfig}" 'false' 'false' 'true'
-    grep -F "${javaHomeConfig}" '/etc/profile'
+    info "$(grep -F "${javaHomeConfig}" '/etc/profile')"
 }
 
 main "${@}"
