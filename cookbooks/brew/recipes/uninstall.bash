@@ -4,8 +4,6 @@ function uninstall()
 {
     local -r confirm="${1}"
 
-    initializeFolder "$(brew --cache)"
-
     if [[ "${confirm}" = 'true' ]]
     then
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)" < '/dev/null' || true
