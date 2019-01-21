@@ -8,6 +8,7 @@ function main()
     checkRequireRootUser
 
     rm -f -r '/Library/Java/JavaVirtualMachines'/openjdk-*.jdk
+    ls -1 '/Library/Java/JavaVirtualMachines'
 }
 
 main "${@}"
