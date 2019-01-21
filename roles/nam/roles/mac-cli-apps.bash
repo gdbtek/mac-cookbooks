@@ -17,6 +17,7 @@ function main()
         'awscli'
         'azure-cli'
         'ccat'
+        'consul'
         'coreutils'
         'cowsay'
         'dialog'
