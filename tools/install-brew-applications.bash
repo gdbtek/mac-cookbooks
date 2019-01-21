@@ -55,8 +55,6 @@ function installBrewPackage()
 
     for packageName in "${packageNameList[@]}"
     do
-        header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
-
         # Pre Install
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
@@ -66,6 +64,8 @@ function installBrewPackage()
         fi
 
         # Install
+
+        header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
         brew ${packageType[@]} reinstall "${packageName}"
         displayVersion "$(brew ${packageType[@]} list --versions "${packageName}")"
