@@ -13,6 +13,7 @@ function main()
 
     local -r packageNames=(
         'ack'
+        'akamai'
         'awscli'
         'azure-cli'
         'ccat'
