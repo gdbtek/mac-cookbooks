@@ -67,7 +67,7 @@ function installBrewPackage()
 
         header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
-        brew ${packageType[@]} reinstall "${packageName}"
+        brew ${packageType[@]} reinstall --force "${packageName}"
         displayVersion "$(brew ${packageType[@]} list --versions "${packageName}")"
 
         # Post Install
