@@ -8,7 +8,7 @@ function main()
     checkRequireRootUser
 
     sudo -u "${SUDO_USER}" packer --version
-    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "$(getUserHomeFolder "${SUDO_USER}")/.packer.d"
+    resetFolderPermission "$(getUserHomeFolder "${SUDO_USER}")/.packer.d" "${SUDO_USER}" "$(getUserGroupName "${SUDO_USER}")"
 }
 
 main "${@}"
