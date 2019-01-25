@@ -40,7 +40,7 @@ function installDependencies()
 
 function installBrewPackage()
 {
-    local -r packageType=("${1}")
+    local -r packageType="${1}"
     local -r packageNames="${2}"
 
     # Get App Name List
@@ -67,8 +67,14 @@ function installBrewPackage()
 
         header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
-        brew ${packageType[@]} reinstall --force "${packageName}"
-        displayVersion "$(brew ${packageType[@]} list --versions "${packageName}")"
+        if [[ "${packageType}" = 'cask' ]]
+        then
+            brew "${packageType}" reinstall --force "${packageName}"
+            displayVersion "$(brew "${packageType}" list --versions "${packageName}")"
+        else
+            brew reinstall "${packageName}"
+            displayVersion "$(brew list --versions "${packageName}")"
+        fi
 
         # Post Install
 
