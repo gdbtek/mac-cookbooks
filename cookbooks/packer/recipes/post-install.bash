@@ -7,7 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    displayVersion "$(sudo -u "${SUDO_USER}" packer --version)"
+    sudo -u "${SUDO_USER}" packer --version
     chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "$(getUserHomeFolder "${SUDO_USER}")/.packer.d"
 }
 
