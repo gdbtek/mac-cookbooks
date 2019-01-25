@@ -8,7 +8,7 @@ function main()
     checkRequireRootUser
 
     displayVersion "$(sudo -u "${SUDO_USER}" packer --version)"
-    chwon -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "$(getUserHomeFolder "${SUDO_USER}")/.packer.d"
+    chown -R "${SUDO_USER}:$(getUserGroupName "${SUDO_USER}")" "$(getUserHomeFolder "${SUDO_USER}")/.packer.d"
 }
 
 main "${@}"
