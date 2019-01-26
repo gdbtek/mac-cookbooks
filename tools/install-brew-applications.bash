@@ -65,13 +65,15 @@ function installBrewPackage()
 
         # Install
 
-        header "INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
-
         if [[ "${packageType}" = 'cask' ]]
         then
+            header "INSTALLING CASK PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+
             brew "${packageType}" reinstall --force "${packageName}"
             displayVersion "$(brew "${packageType}" list --versions "${packageName}")"
         else
+            header "INSTALLING BREW PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+
             brew reinstall "${packageName}"
             displayVersion "$(brew list --versions "${packageName}")"
         fi
