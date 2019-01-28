@@ -1,10 +1,10 @@
 #!/bin/bash -e
 
-function resetApplicationPermissionOfPath()
+function clearAppExtendedAttributesOfPath()
 {
-    local -r folderPath="${1}"
+    local -r appPath="${1}"
 
-    if [[ -d "${folderPath}" ]]
+    if [[ -d "${appPath}" ]]
     then
         # Get App Path List
 
@@ -12,7 +12,7 @@ function resetApplicationPermissionOfPath()
         IFS=$'\n'
 
         local -r appPathList=($(
-            find "${folderPath}" \
+            find "${appPath}" \
                 -type d \
                 -name '*.app' \
                 -maxdepth 2 |
@@ -21,9 +21,9 @@ function resetApplicationPermissionOfPath()
 
         IFS="${OLD_IFS}"
 
-        # Reset App Permissions
+        # Clear Extended Attributes
 
-        resetMacApplicationPermissions "RESETTING APPLICATION PERMISSIONS OF ${folderPath}" "${appPathList[@]}"
+        clearAppExtendedAttributes "CLEARING EXTENDED ATTRIBUTES OF ${appPath}" "${appPathList[@]}"
     fi
 }
 
@@ -36,10 +36,10 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    # Reset Application Permission
+    # Clear Extended Attributes
 
-    resetApplicationPermissionOfPath '/Applications'
-    resetApplicationPermissionOfPath "$(getCurrentUserHomeFolder)/Applications"
+    clearAppExtendedAttributesOfPath '/Applications'
+    clearAppExtendedAttributesOfPath "$(getCurrentUserHomeFolder)/Applications"
 }
 
 main "${@}"
