@@ -23,7 +23,7 @@ function clearAppExtendedAttributesOfPath()
 
         # Clear Extended Attributes
 
-        clearAppExtendedAttributes "CLEARING EXTENDED ATTRIBUTES OF ${appPath}" "${appPathList[@]}"
+        clearMacAppExtendedAttributes "CLEARING EXTENDED ATTRIBUTES OF ${appPath}" "${appPathList[@]}"
     fi
 }
 
