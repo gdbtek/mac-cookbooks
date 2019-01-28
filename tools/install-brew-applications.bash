@@ -109,6 +109,7 @@ function install()
 
     header 'CLEANING UP BREW'
 
+    brew cleanup
     initializeFolder "$(brew --cache)"
     brew doctor || true
 }
