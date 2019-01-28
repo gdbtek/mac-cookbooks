@@ -34,7 +34,7 @@ function main()
     # Validations
 
     checkRequireMacSystem
-    checkRequireNonRootUser
+    checkRequireRootUser
 
     # Reset Application Permission
 
