@@ -22,7 +22,7 @@ function closeApplicationsOfPath()
 
         IFS="${OLD_IFS}"
 
-        closeMacApplications 'CLOSING APPLICATIONS' "${appNameList[@]}"
+        closeMacApplications "CLOSING APPLICATIONS OF ${folderPath}" "${appNameList[@]}"
     fi
 }
 
