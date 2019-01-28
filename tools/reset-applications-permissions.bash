@@ -23,17 +23,7 @@ function resetApplicationPermissionOfPath()
 
         # Reset App Permissions
 
-        if [[ "${#appPathList[@]}" -gt '0' ]]
-        then
-            header "RESETTING APPLICATION PERMISSIONS OF ${folderPath}"
-        fi
-
-        local appPath=''
-
-        for appPath in "${appPathList[@]}"
-        do
-            echo ">>>${appPath}"
-        done
+        resetMacApplicationPermissions "RESETTING APPLICATION PERMISSIONS OF ${folderPath}" "${appPathList[@]}"
     fi
 }
 
