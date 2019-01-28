@@ -6,6 +6,8 @@ function closeApplicationsOfPath()
 
     if [[ -d "${folderPath}" ]]
     then
+        # Get App Name List
+
         local -r OLD_IFS="${IFS}"
         IFS=$'\n'
 
@@ -21,6 +23,8 @@ function closeApplicationsOfPath()
         ))
 
         IFS="${OLD_IFS}"
+
+        # Close Applications
 
         closeMacApplications "CLOSING APPLICATIONS OF ${folderPath}" "${appNameList[@]}"
     fi
