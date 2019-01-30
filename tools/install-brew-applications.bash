@@ -107,11 +107,7 @@ function install()
 
     # Clean Up
 
-    header 'CLEANING UP BREW'
-
-    brew cleanup
-    initializeFolder "$(brew --cache)"
-    brew doctor || true
+    "$(dirname "${BASH_SOURCE[0]}")/clean-up-brew.bash"
 }
 
 ########
