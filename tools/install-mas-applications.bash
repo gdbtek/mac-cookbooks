@@ -54,6 +54,11 @@ function install()
         header "INSTALLING STORE APP $(tr '[:lower:]' '[:upper:]' <<< "${appName}")"
         mas lucky "${appName}"
     done
+
+    if [[ "${#appNameList[@]}" -gt '0' ]]
+    then
+        mas upgrade
+    fi
 }
 
 ########
