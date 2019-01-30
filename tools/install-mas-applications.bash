@@ -57,6 +57,7 @@ function install()
 
     if [[ "${#appNameList[@]}" -gt '0' ]]
     then
+        header 'UPGRADING STORE APPLICATIONS'
         mas upgrade
     fi
 }
