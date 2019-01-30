@@ -9,13 +9,16 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    # Clean Up
+    # Upgrade Brew
 
-    header 'CLEANING UP BREW'
+    header 'UPGRADING BREW'
 
-    brew cleanup
-    initializeFolder "$(brew --cache)"
-    brew doctor || true
+    brew update
+    brew upgrade
+
+    # Clean Up Brew
+
+    "$(dirname "${BASH_SOURCE[0]}")/clean-up-brew.bash"
 }
 
 main "${@}"

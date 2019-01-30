@@ -93,12 +93,9 @@ function install()
     local -r caskPackageNames="${1}"
     local -r packageNames="${2}"
 
-    # Update Brew
+    # Upgrade Brew
 
-    header 'UPDATING AND UPGRADING BREW'
-
-    brew update
-    brew upgrade
+    "$(dirname "${BASH_SOURCE[0]}")/upgrade-brew.bash"
 
     # Install Packages
 
