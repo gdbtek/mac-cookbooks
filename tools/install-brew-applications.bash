@@ -87,7 +87,7 @@ function installBrewPackage()
         fi
     done
 
-    if [[ "${#packageNameList[@]}" -gt '0' ]]
+    if [[ "${packageType}" = 'cask' && "${#packageNameList[@]}" -gt '0' ]]
     then
         sudo "$(dirname "${BASH_SOURCE[0]}")/clear-app-extended-attributes.bash"
     fi
