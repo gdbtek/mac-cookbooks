@@ -59,6 +59,8 @@ function install()
     then
         header 'UPGRADING STORE APPLICATIONS'
         mas upgrade
+
+        sudo "$(dirname "${BASH_SOURCE[0]}")/clear-app-extended-attributes.bash"
     fi
 }
 
