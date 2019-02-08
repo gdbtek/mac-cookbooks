@@ -120,6 +120,7 @@ function main()
 
     installDependencies
     install "${appNames}"
+    postUpMessage
 }
 
 main "${@}"

@@ -178,6 +178,7 @@ function main()
 
     installDependencies
     install "${caskPackageNames}" "${packageNames}"
+    postUpMessage
 }
 
 main "${@}"
