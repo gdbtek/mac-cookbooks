@@ -25,6 +25,8 @@ function uninstall()
         '/usr/local/sbin' \
         '/usr/local/share' \
         '/usr/local/var'
+
+    info "\n$(ls -la '/usr/local')"
 }
 
 function main()
