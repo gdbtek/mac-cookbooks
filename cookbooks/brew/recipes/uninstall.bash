@@ -26,7 +26,7 @@ function uninstall()
         '/usr/local/share' \
         '/usr/local/var'
 
-    info "\n$(ls -la '/usr/local')"
+    info "\n$(ls -a -l '/usr/local')"
 }
 
 function main()
