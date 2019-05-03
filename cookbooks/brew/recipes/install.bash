@@ -12,7 +12,7 @@ function install()
     fi
 
     initializeFolder "$(brew --cache)"
-    displayVersion "$(brew -v)"
+    displayVersion "$(brew -v)" 'BREW'
 }
 
 function main()

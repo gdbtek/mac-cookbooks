@@ -8,7 +8,7 @@ function main()
     checkRequireRootUser
 
     sudo -u "${SUDO_USER}" npm install -g 'npm@latest'
-    displayVersion "$(npm --version)"
+    displayVersion "$(npm --version)" 'NPM'
 }
 
 main "${@}"

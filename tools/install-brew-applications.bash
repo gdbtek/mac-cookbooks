@@ -55,11 +55,13 @@ function installBrewPackage()
 
     for packageName in "${packageNameList[@]}"
     do
+        local packageNameForHeader="$(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+
         # Pre Install
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
         then
-            header "PRE-INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+            header "PRE-INSTALLING PACKAGE ${packageNameForHeader}"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash"
         fi
 
@@ -67,12 +69,12 @@ function installBrewPackage()
 
         if [[ "${packageType}" = 'cask' ]]
         then
-            header "INSTALLING CASK PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+            header "INSTALLING CASK PACKAGE ${packageNameForHeader}"
 
             brew "${packageType}" reinstall --force "${packageName}"
             displayVersion "$(brew "${packageType}" list --versions "${packageName}")" "${packageName}"
         else
-            header "INSTALLING BREW PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+            header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
 
             brew reinstall "${packageName}"
             displayVersion "$(brew list --versions "${packageName}")" "${packageName}"
@@ -82,7 +84,7 @@ function installBrewPackage()
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash" ]]
         then
-            header "POST-INSTALLING PACKAGE $(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+            header "POST-INSTALLING PACKAGE ${packageNameForHeader}"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash"
         fi
     done
