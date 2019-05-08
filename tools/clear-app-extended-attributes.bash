@@ -3,6 +3,7 @@
 function clearAppExtendedAttributesOfPath()
 {
     local -r appPath="${1}"
+    local -r fileNameRegex="${2}"
 
     if [[ -d "${appPath}" ]]
     then
@@ -14,7 +15,7 @@ function clearAppExtendedAttributesOfPath()
         local -r appPathList=($(
             find "${appPath}" \
                 -type d \
-                -name '*.app' \
+                -name "${fileNameRegex}" \
                 -maxdepth 2 |
             sort -f
         ))
@@ -29,6 +30,8 @@ function clearAppExtendedAttributesOfPath()
 
 function main()
 {
+    local -r folderPath="${1}"
+
     source "$(dirname "${BASH_SOURCE[0]}")/../libraries/util.bash"
 
     # Validations
@@ -38,8 +41,14 @@ function main()
 
     # Clear Extended Attributes
 
-    clearAppExtendedAttributesOfPath '/Applications'
-    clearAppExtendedAttributesOfPath "$(getCurrentUserHomeFolder)/Applications"
+    if [[ "$(isEmptyString "${folderPath}")" = 'true' ]]
+    then
+        clearAppExtendedAttributesOfPath '/Applications' '*.app'
+        clearAppExtendedAttributesOfPath "$(getCurrentUserHomeFolder)/Applications" '*.app'
+    else
+        checkExistFolder "${folderPath}"
+        clearAppExtendedAttributesOfPath "${folderPath}" '*'
+    fi
 }
 
 main "${@}"
