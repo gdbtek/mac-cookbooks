@@ -50,7 +50,6 @@ function main()
         'tree'
         'vault'
         'watch'
-        'watchman'
         'wget'
         'whatmask'
     )
