@@ -43,7 +43,6 @@ function main()
         'node'
         'nomad'
         'packer'
-        'parallel'
         'python3'
         'shellcheck'
         'siege'
