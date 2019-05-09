@@ -37,6 +37,7 @@ function main()
         'midnight-commander'
         'moreutils'
         'mtr'
+        'ncdu'
         'netcat'
         'nmap'
         'node'
