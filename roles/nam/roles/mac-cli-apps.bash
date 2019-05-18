@@ -22,6 +22,7 @@ function main()
         'cowsay'
         'dialog'
         'fortune'
+        'gawk'
         'geoip'
         'glances'
         'go'
