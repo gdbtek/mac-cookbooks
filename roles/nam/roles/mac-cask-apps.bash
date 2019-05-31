@@ -6,6 +6,7 @@ function main()
 
     local -r caskPackageNames=(
         '1password'
+        'adobe-acrobat-reader'
         'beyond-compare'
         'blue-jeans'
         'docker'
