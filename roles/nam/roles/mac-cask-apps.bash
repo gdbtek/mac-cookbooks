@@ -14,6 +14,7 @@ function main()
         'google-backup-and-sync'
         'google-chrome'
         'kitematic'
+        'paw'
         'tower'
         'transmit'
         'visual-studio-code'
