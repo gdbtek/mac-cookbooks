@@ -32,6 +32,7 @@ function main()
         'jq'
         'lolcat'
         'mas'
+        'maven'
         'midnight-commander'
         'moreutils'
         'mtr'
