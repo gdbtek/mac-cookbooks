@@ -21,12 +21,10 @@ function main()
 
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
-    checkRequireMacSystem
-    checkRequireNonRootUser
-
     header 'INSTALLING BREW'
 
-    # Install
+    checkRequireMacSystem
+    checkRequireNonRootUser
 
     install "${confirm}"
 }
