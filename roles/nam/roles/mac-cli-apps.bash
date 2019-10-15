@@ -58,6 +58,7 @@ function main()
 
     # Install
 
+    source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/app.bash"
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
@@ -65,6 +66,8 @@ function main()
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
         --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
         --package-names "$(arrayToString "${packageNames[@]}")"
+
+    resetVirtualBoxUSRLocalBinFiles
 }
 
 main "${@}"

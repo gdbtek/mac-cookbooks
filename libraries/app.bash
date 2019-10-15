@@ -1,11 +1,15 @@
 #!/bin/bash -e
 
+source "$(dirname "${BASH_SOURCE[0]}")/util.bash"
+
 ########################
 # VIRTUALBOX UTILITIES #
 ########################
 
 function resetVirtualBoxUSRLocalBinFiles()
 {
+    header 'RESETTING VIRTUAL-BOX USR-LOCAL-BIN FILES'
+
     local -r virtualBoxMacOSFolderPath='/Applications/VirtualBox.app/Contents/MacOS'
 
     if [[ -d "${virtualBoxMacOSFolderPath}" ]]
