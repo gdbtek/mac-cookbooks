@@ -18,7 +18,8 @@ function resetVirtualBoxUSRLocalBinFiles()
 
         find \
             "${virtualBoxMacOSFolderPath}" \
-            -mindepth 1 -maxdepth 1 \
+            -mindepth 1 \
+            -maxdepth 1 \
             -type f \
             -perm -755 \
             -not -name '*.*' \
