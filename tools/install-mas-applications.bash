@@ -47,7 +47,7 @@ function install()
 
     # Each App Name
 
-    local appName=''
+    local appName
 
     for appName in "${appNameList[@]}"
     do
