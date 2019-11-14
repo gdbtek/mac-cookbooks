@@ -16,8 +16,7 @@ function resetVirtualBoxUSRLocalBinFiles()
     then
         mkdir -p '/usr/local/bin'
 
-        find \
-            "${virtualBoxMacOSFolderPath}" \
+        find "${virtualBoxMacOSFolderPath}" \
             -mindepth 1 \
             -maxdepth 1 \
             -type f \
