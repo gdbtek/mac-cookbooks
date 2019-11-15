@@ -55,7 +55,8 @@ function installBrewPackage()
 
     for packageName in "${packageNameList[@]}"
     do
-        local packageNameForHeader="$(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
+        local packageNameForHeader=''
+        packageNameForHeader="$(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
         # Pre Install
 
