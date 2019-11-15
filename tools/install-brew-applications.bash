@@ -51,7 +51,7 @@ function installBrewPackage()
 
     # Each Package Name
 
-    local packageName
+    local packageName=''
 
     for packageName in "${packageNameList[@]}"
     do
