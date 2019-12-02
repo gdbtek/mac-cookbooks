@@ -56,20 +56,30 @@ function main()
         'whatmask'
     )
 
-    # Install
-
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/app.bash"
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
+    # Install Brew
+
     "$(dirname "${BASH_SOURCE[0]}")/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
+
+    # Install Brew Applications
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
         --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
         --package-names "$(arrayToString "${packageNames[@]}")"
 
+    # Install Command Line Tools without Xcode
+
+    xcode-select --install || true
+
+    # Install All Available Software Updates
+
     sudo "$(dirname "${BASH_SOURCE[0]}")/../../../tools/update-software.bash"
 
-    resetVirtualBoxUSRLocalBinFiles
+    # Install VirtualBox Binary Files
+
+    installVirtualBoxUSRLocalBinFiles
 }
 
 main "${@}"

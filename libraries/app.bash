@@ -6,9 +6,9 @@ source "$(dirname "${BASH_SOURCE[0]}")/util.bash"
 # VIRTUALBOX UTILITIES #
 ########################
 
-function resetVirtualBoxUSRLocalBinFiles()
+function installVirtualBoxUSRLocalBinFiles()
 {
-    header 'RESETTING VIRTUAL-BOX USR-LOCAL-BIN FILES'
+    header 'INSTALLING VIRTUAL-BOX USR-LOCAL-BIN FILES'
 
     local -r virtualBoxMacOSFolderPath='/Applications/VirtualBox.app/Contents/MacOS'
 
