@@ -67,7 +67,7 @@ function main()
         --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
         --package-names "$(arrayToString "${packageNames[@]}")"
 
-    "$(dirname "${BASH_SOURCE[0]}")/../../../tools/update-software.bash"
+    sudo "$(dirname "${BASH_SOURCE[0]}")/../../../tools/update-software.bash"
 
     resetVirtualBoxUSRLocalBinFiles
 }
