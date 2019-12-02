@@ -2,6 +2,17 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/util.bash"
 
+######################
+# COMMAND LINE TOOLS #
+######################
+
+function installCommandLineTools()
+{
+    header 'INSTALLING COMMAND LINE TOOLS'
+
+    xcode-select --install || true
+}
+
 ########################
 # VIRTUALBOX UTILITIES #
 ########################

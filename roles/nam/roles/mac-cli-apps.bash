@@ -69,9 +69,9 @@ function main()
         --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
         --package-names "$(arrayToString "${packageNames[@]}")"
 
-    # Install Command Line Tools without Xcode
+    # Install Command Line Tools
 
-    xcode-select --install || true
+    installCommandLineTools
 
     # Install All Available Software Updates
 
