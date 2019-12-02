@@ -71,7 +71,7 @@ function main()
 
     # Install Command Line Tools
 
-    installCommandLineTools
+    "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-command-line-tools.bash"
 
     # Install All Available Software Updates
 
