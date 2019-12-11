@@ -7,17 +7,16 @@ function main()
     local -r caskPackageNames=(
         '1password'
         'adobe-acrobat-reader'
-        'beyond-compare'
         'blue-jeans'
         'docker'
         'dropbox'
         'goofy'
         'google-backup-and-sync'
         'google-chrome'
-        'kitematic'
         'paw'
         'tower'
         'transmit'
+        'virtualbox'
         'visual-studio-code'
         'vmware-fusion'
     )

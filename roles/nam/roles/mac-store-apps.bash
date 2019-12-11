@@ -11,7 +11,6 @@ function main()
         'Microsoft Remote Desktop 10'
         'Slack'
         'SnippetsLab'
-        'Xcode'
     )
 
     # Install
