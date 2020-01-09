@@ -14,6 +14,7 @@ function main()
         'goofy'
         'google-backup-and-sync'
         'google-chrome'
+        'microsoft-teams'
         'paw'
         'tower'
         'transmit'
