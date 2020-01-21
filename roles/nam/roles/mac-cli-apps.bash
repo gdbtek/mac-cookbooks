@@ -30,6 +30,7 @@ function main()
         'htop'
         'ipcalc'
         'jq'
+        'kubernetes-cli'
         'lolcat'
         'mas'
         'maven'
