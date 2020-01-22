@@ -35,6 +35,7 @@ function main()
         'mas'
         'maven'
         'midnight-commander'
+        'minikube'
         'moreutils'
         'mtr'
         'ncdu'
