@@ -82,6 +82,10 @@ function main()
     # Install VirtualBox Binary Files
 
     installVirtualBoxUSRLocalBinFiles
+
+    # Finish
+
+    postUpMessage
 }
 
 main "${@}"
