@@ -6,21 +6,21 @@ function main()
 
     local -r caskPackageNames=(
         '1password'
-        'adobe-acrobat-reader'
         'beyond-compare'
         'blue-jeans'
-        'docker'
         'dropbox'
         'goofy'
         'google-backup-and-sync'
         'google-chrome'
-        'microsoft-teams'
-        'paw'
         'tower'
-        'transmit'
-        'virtualbox'
         'visual-studio-code'
-        'vmware-fusion'
+        # 'adobe-acrobat-reader'
+        # 'docker'
+        # 'microsoft-teams'
+        # 'paw'
+        # 'transmit'
+        # 'virtualbox'
+        # 'vmware-fusion'
     )
 
     # Install
