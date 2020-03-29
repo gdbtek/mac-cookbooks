@@ -16,7 +16,6 @@ function main()
         'visual-studio-code'
         # 'adobe-acrobat-reader'
         # 'docker'
-        # 'microsoft-teams'
         # 'paw'
         # 'transmit'
         # 'virtualbox'
