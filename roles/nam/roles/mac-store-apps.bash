@@ -6,11 +6,11 @@ function main()
 
     local -r storeAppNames=(
         'Amphetamine'
+        'CopyClip 2 - Clipboard Manager'
         'Magnet'
         'Microsoft Remote Desktop 10'
         'Slack'
         'SnippetsLab'
-        # 'CopyClip 2 - Clipboard Manager'
     )
 
     # Install
