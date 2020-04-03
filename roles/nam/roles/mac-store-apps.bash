@@ -8,6 +8,7 @@ function main()
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
         'Magnet'
+        'Messenger'
         'Microsoft Remote Desktop 10'
         'Slack'
         'SnippetsLab'
