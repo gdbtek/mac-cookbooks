@@ -45,7 +45,7 @@ function main()
         'nomad'
         'packer'
         'python3'
-        'redis-cli'
+        'redis'
         'shellcheck'
         'siege'
         'terraform'
