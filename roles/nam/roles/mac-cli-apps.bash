@@ -48,6 +48,7 @@ function main()
         'redis'
         'shellcheck'
         'siege'
+        'stunnel'
         'terraform'
         'testssl'
         'tldr'
