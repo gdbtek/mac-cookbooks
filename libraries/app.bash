@@ -24,5 +24,7 @@ function installVirtualBoxUSRLocalBinFiles()
             -not -name '*.*' \
             -exec cp -f -p '{}' '/usr/local/bin' \; \
             -print
+    else
+        warn 'VirtualBox not found'
     fi
 }
