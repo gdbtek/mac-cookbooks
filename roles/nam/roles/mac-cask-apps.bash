@@ -14,7 +14,6 @@ function main()
         'tower'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
-        # 'docker'
         # 'paw'
         # 'transmit'
         # 'virtualbox'
