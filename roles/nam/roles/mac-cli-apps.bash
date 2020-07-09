@@ -58,6 +58,7 @@ function main()
         'watch'
         'wget'
         'whatmask'
+        'yq'
     )
 
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/app.bash"
