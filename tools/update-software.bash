@@ -15,7 +15,7 @@ function main()
     softwareupdate --list
 
     header 'UPDATING SOFTWARE'
-    softwareupdate --all --install
+    softwareupdate --all --install --force
 }
 
 main "${@}"

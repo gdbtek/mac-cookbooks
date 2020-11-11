@@ -15,7 +15,7 @@ function main()
 
     brew update
     brew upgrade
-    brew cask upgrade
+    brew upgrade --cask
 
     # Clean Up Brew
 
