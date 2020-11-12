@@ -7,17 +7,11 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    local -r openJDKRootFolderPath="$(ls -1 -d -t '/Library/Java/JavaVirtualMachines/'openjdk-*.jdk | head -1)"
+    local -r openJDKHomeFolderPath='/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home'
 
-    checkExistFolder "${openJDKRootFolderPath}/Contents/Home"
+    checkExistFolder "${openJDKHomeFolderPath}"
 
-    # Allow Non Identified Developer
-
-    xattr -d -r 'com.apple.quarantine' "${openJDKRootFolderPath}"
-
-    # Add Dynamic Search For JAVA_HOME
-
-    local -r javaHomeConfig="export JAVA_HOME=\"\$(ls -1 -d -t '/Library/Java/JavaVirtualMachines/'openjdk-*.jdk | head -1)/Contents/Home\""
+    local -r javaHomeConfig="export JAVA_HOME='${openJDKHomeFolderPath}'"
 
     appendToFileIfNotFound \
         '/etc/profile' \

@@ -6,9 +6,6 @@ function main()
 
     local -r caskPackageNames=(
         'chef/chef/chefdk'
-        'google-cloud-sdk'
-        'java'
-        'vagrant'
     )
 
     local -r packageNames=(
@@ -43,6 +40,7 @@ function main()
         'nmap'
         'node'
         'nomad'
+        'openjdk'
         'packer'
         'python3'
         'redis'

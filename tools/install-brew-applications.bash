@@ -73,11 +73,11 @@ function installBrewPackage()
             header "INSTALLING CASK PACKAGE ${packageNameForHeader}"
 
             brew reinstall --force "${packageName}"
-            displayVersion "$(brew list --"${packageType}" --version "${packageName}")" "${packageNameForHeader}"
+            displayVersion "$(brew list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
         else
             header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
 
-            brew reinstall "${packageName}"
+            brew reinstall --force "${packageName}"
             displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
         fi
 
