@@ -21,6 +21,7 @@ function main()
         # 'microsoft-word'
         # 'paw'
         # 'virtualbox'
+        # 'zoom'
     )
 
     # Install
