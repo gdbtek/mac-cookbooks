@@ -13,9 +13,9 @@ function main()
         'google-chrome'
         'tower'
         'visual-studio-code'
+        'transmit'
         # 'adobe-acrobat-reader'
         # 'paw'
-        # 'transmit'
         # 'virtualbox'
         # 'vmware-fusion'
     )
