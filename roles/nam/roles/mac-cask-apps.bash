@@ -13,12 +13,12 @@ function main()
         'google-chrome'
         'microsoft-excel'
         'microsoft-outlook'
-        'microsoft-word'
         'tower'
         'transmit'
         'visual-studio-code'
         'vmware-fusion'
         # 'adobe-acrobat-reader'
+        # 'microsoft-word'
         # 'paw'
         # 'virtualbox'
     )
