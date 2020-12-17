@@ -11,13 +11,16 @@ function main()
         'dropbox'
         'google-backup-and-sync'
         'google-chrome'
+        'microsoft-excel'
+        'microsoft-outlook'
+        'microsoft-word'
         'tower'
-        'visual-studio-code'
         'transmit'
+        'visual-studio-code'
+        'vmware-fusion'
         # 'adobe-acrobat-reader'
         # 'paw'
         # 'virtualbox'
-        # 'vmware-fusion'
     )
 
     # Install
