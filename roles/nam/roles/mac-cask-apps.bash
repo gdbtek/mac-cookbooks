@@ -16,12 +16,12 @@ function main()
         'sourcetree'
         'transmit'
         'visual-studio-code'
-        'vmware-fusion'
         # 'adobe-acrobat-reader'
         # 'microsoft-word'
         # 'paw'
         # 'tower'
         # 'virtualbox'
+        # 'vmware-fusion'
         # 'zoom'
     )
 
