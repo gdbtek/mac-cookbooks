@@ -42,6 +42,7 @@ function main()
     # Close Applications
 
     closeApplicationsOfPath '/Applications'
+    closeApplicationsOfPath '/System/Applications'
     closeApplicationsOfPath "$(getCurrentUserHomeFolder)/Applications"
 }
 
