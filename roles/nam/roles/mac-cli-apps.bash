@@ -5,8 +5,7 @@ function main()
     # Packages
 
     local -r caskPackageNames=(
-        'gdbtek/homebrew-chef/chefdk'
-        # 'chef/chef/chefdk'
+        'chef/chef/chefdk'
     )
 
     local -r packageNames=(
