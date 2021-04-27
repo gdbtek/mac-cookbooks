@@ -12,6 +12,7 @@ function main()
         'google-chrome'
         'microsoft-excel'
         'microsoft-outlook'
+        'microsoft-teams'
         'sourcetree'
         'transmit'
         'visual-studio-code'

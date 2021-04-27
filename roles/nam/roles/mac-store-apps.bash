@@ -7,6 +7,7 @@ function main()
     local -r storeAppNames=(
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
+        'iMovie'
         'Magnet'
         'Messenger'
         'Microsoft Remote Desktop 10'
