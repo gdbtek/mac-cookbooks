@@ -20,6 +20,7 @@ function main()
         'netcat'
         'openjdk'
         'packer'
+        'pcre'
         'tree'
         'yq'
         # 'ack'
