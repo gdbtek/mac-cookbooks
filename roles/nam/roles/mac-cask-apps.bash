@@ -7,7 +7,6 @@ function main()
     local -r caskPackageNames=(
         '1password'
         'beyond-compare'
-        'blue-jeans'
         'dropbox'
         'google-backup-and-sync'
         'google-chrome'
@@ -17,6 +16,7 @@ function main()
         'transmit'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
+        # 'blue-jeans'
         # 'microsoft-word'
         # 'paw'
         # 'tower'
