@@ -7,12 +7,17 @@ function main()
     local -r storeAppNames=(
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
-        'iMovie'
         'Magnet'
         'Messenger'
+        'Microsoft Outlook'
         'Microsoft Remote Desktop 10'
         'Slack'
         'SnippetsLab'
+        # 'iMovie'
+        # 'Microsoft Excel'
+        # 'Microsoft Word'
+        # 'Numbers'
+        # 'Pages'
     )
 
     # Install

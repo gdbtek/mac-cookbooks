@@ -6,24 +6,16 @@ function main()
 
     local -r caskPackageNames=(
         '1password'
-        'beyond-compare'
         'dropbox'
         'google-backup-and-sync'
         'google-chrome'
-        'microsoft-excel'
-        'microsoft-outlook'
         'microsoft-teams'
         'sourcetree'
-        'transmit'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
-        # 'blue-jeans'
-        # 'microsoft-word'
-        # 'paw'
-        # 'tower'
-        # 'virtualbox'
+        # 'beyond-compare'
+        # 'transmit'
         # 'vmware-fusion'
-        # 'zoom'
     )
 
     # Install
