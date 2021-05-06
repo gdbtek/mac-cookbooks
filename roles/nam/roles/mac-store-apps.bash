@@ -7,6 +7,7 @@ function main()
     local -r storeAppNames=(
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
+        'Final Cut Pro'
         'Magnet'
         'Messenger'
         'Microsoft Outlook'
