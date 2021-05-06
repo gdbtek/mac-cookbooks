@@ -14,7 +14,6 @@ function main()
         'Microsoft Remote Desktop 10'
         'Slack'
         'SnippetsLab'
-        # 'iMovie'
         # 'Microsoft Excel'
         # 'Microsoft Word'
         # 'Numbers'
