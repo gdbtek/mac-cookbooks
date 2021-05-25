@@ -5,7 +5,7 @@ function main()
     # Packages
 
     local -r caskPackageNames=(
-        'chefdk'
+        'chef/chef/chefdk'
     )
 
     local -r packageNames=(
