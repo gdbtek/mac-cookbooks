@@ -27,7 +27,6 @@ function uninstall()
         '/usr/local/var'
 
     info "\n$(ls -a -l '/usr/local')"
-    echo
     info "\n$(ls -a -l '/opt')"
 }
 
