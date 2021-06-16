@@ -19,6 +19,7 @@ function main()
         'netcat'
         'packer'
         'pcre'
+        'rar'
         'tree'
         'yq'
         # 'ack'
