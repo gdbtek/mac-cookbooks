@@ -8,7 +8,11 @@ function main()
     checkRequireRootUser
 
     sudo -u "${SUDO_USER}" packer --version
-    resetFolderPermission "$(getUserHomeFolder "${SUDO_USER}")/.packer.d" "${SUDO_USER}" "$(getUserGroupName "${SUDO_USER}")"
+
+    if [[ -d "$(getUserHomeFolder "${SUDO_USER}")/.packer.d" ]]
+    then
+        resetFolderPermission "$(getUserHomeFolder "${SUDO_USER}")/.packer.d" "${SUDO_USER}" "$(getUserGroupName "${SUDO_USER}")"
+    fi
 }
 
 main "${@}"
