@@ -21,6 +21,7 @@ function main()
         'packer'
         'pcre'
         'tree'
+        'wget'
         'yq'
         # 'ack'
         # 'akamai'
@@ -57,7 +58,6 @@ function main()
         # 'tmux'
         # 'vault'
         # 'watch'
-        # 'wget'
         # 'whatmask'
     )
 
