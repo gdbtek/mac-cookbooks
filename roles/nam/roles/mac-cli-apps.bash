@@ -66,7 +66,7 @@ function main()
 
     # Install Brew
 
-    rm -f -r '/opt/chefdk'
+    sudo rm -f -r '/opt/chefdk'
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../cookbooks/brew/recipes/reinstall.bash" 'true'
 
