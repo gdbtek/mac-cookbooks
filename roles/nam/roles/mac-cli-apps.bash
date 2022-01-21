@@ -28,6 +28,7 @@ function main()
         # 'azure-cli'
         # 'consul'
         # 'cowsay'
+        # 'docker'
         # 'fortune'
         # 'geoip'
         # 'glances'
