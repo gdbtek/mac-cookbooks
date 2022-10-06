@@ -6,9 +6,11 @@ function install()
 
     if [[ "${confirm}" = 'true' ]]
     then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < '/dev/null'
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < '/dev/null'
+        # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < '/dev/null'
     else
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
     initializeFolder "$(brew --cache)"
