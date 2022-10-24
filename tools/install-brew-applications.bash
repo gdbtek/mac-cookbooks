@@ -63,6 +63,9 @@ function installBrewPackage()
 
         # Install
 
+        export HOMEBREW_NO_ENV_HINTS=TRUE
+        export HOMEBREW_NO_INSTALL_CLEANUP=FALSE
+
         header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
         brew reinstall --force "${packageName}" || brew install --force "${packageName}"
         displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
