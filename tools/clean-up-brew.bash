@@ -13,7 +13,8 @@ function main()
 
     header 'CLEANING UP BREW'
 
-    export HOMEBREW_NO_ENV_HINTS=1
+    HOMEBREW_NO_ENV_HINTS=TRUE
+    HOMEBREW_NO_INSTALL_CLEANUP=FALSE
 
     brew cleanup
     initializeFolder "$(brew --cache)"
