@@ -5,12 +5,13 @@ function main()
     # Packages
 
     local -r caskPackageNames=(
-        'chef-workstation'
+        # 'chef-workstation'
     )
 
     local -r packageNames=(
         'awscli'
         'ccat'
+        'chef/chef/chef-infra-client'
         'coreutils'
         'dialog'
         'gawk'
