@@ -13,6 +13,7 @@ function main()
 
     header 'CLEANING UP BREW'
 
+    HOMEBREW_NO_ENV_HINTS=1
     brew cleanup
     initializeFolder "$(brew --cache)"
     brew doctor || true
