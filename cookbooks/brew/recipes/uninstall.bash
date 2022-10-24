@@ -12,6 +12,9 @@ function uninstall()
     fi
 
     rm -f -r \
+        '/opt/chef-workstation' \
+        '/opt/chef' \
+        '/opt/inspec' \
         '/usr/local/.com.apple.installer.keep' \
         '/usr/local/bin' \
         '/usr/local/Caskroom' \
