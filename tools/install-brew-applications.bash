@@ -63,7 +63,7 @@ function installBrewPackage()
 
         # Install
 
-        HOMEBREW_NO_INSTALL_CLEANUP=FALSE
+        export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
 
         header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
         brew reinstall --force "${packageName}" || brew install --force "${packageName}"
