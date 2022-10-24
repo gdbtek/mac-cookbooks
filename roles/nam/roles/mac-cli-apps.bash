@@ -4,14 +4,10 @@ function main()
 {
     # Packages
 
-    local -r caskPackageNames=(
-        # 'chef-workstation'
-    )
-
     local -r packageNames=(
+        'chef-workstation'
         'awscli'
         'ccat'
-        'chef/chef/chef-infra-client'
         'coreutils'
         'dialog'
         'gawk'
@@ -76,7 +72,6 @@ function main()
     # Install Brew Applications
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
-        --cask-package-names "$(arrayToString "${caskPackageNames[@]}")" \
         --package-names "$(arrayToString "${packageNames[@]}")"
 
     # Install Command Line Tools

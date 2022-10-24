@@ -12,18 +12,14 @@ function displayUsage()
     echo    'SYNOPSIS :'
     echo    "  ${scriptName}"
     echo    '    --help'
-    echo    '    --cask-package-names    <CASK_PACKAGE_NAMES>'
     echo    '    --package-names         <PACKAGE_NAMES>'
     echo -e '\033[1;35m'
     echo    'DESCRIPTION :'
     echo    '  --help                  Help page (optional)'
-    echo    '  --cask-package-names    List of cask package names seperated by spaces or commas (require)'
     echo    '  --package-names         List of package names seperated by spaces or commas (require)'
     echo -e '\033[1;36m'
     echo    'EXAMPLES :'
     echo    "  ./${scriptName} --help"
-    echo    "  ./${scriptName} --cask-package-names 'chefdk, java' --package-names 'tree, wget'"
-    echo    "  ./${scriptName} --cask-package-names 'chefdk, java'"
     echo    "  ./${scriptName} --package-names 'tree, wget'"
     echo -e '\033[0m'
 
@@ -40,8 +36,7 @@ function installDependencies()
 
 function installBrewPackage()
 {
-    local -r packageType="${1}"
-    local -r packageNames="${2}"
+    local -r packageNames="${1}"
 
     # Get App Name List
 
@@ -68,18 +63,9 @@ function installBrewPackage()
 
         # Install
 
-        if [[ "${packageType}" = 'cask' ]]
-        then
-            header "INSTALLING CASK PACKAGE ${packageNameForHeader}"
-
-            brew reinstall --force "${packageName}" || brew install --force "${packageName}"
-            displayVersion "$(brew list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
-        else
-            header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
-
-            brew reinstall --force "${packageName}" || brew install --force "${packageName}"
-            displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
-        fi
+        header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
+        brew reinstall --force "${packageName}" || brew install --force "${packageName}"
+        displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
 
         # Post Install
 
@@ -93,8 +79,7 @@ function installBrewPackage()
 
 function install()
 {
-    local -r caskPackageNames="${1}"
-    local -r packageNames="${2}"
+    local -r packageNames="${1}"
 
     # Upgrade Brew
 
@@ -102,8 +87,7 @@ function install()
 
     # Install Packages
 
-    installBrewPackage 'cask' "${caskPackageNames}"
-    installBrewPackage '' "${packageNames}"
+    installBrewPackage "${packageNames}"
 
     # Clean Up
 
@@ -127,16 +111,6 @@ function main()
         case "${1}" in
             --help)
                 displayUsage 0
-                ;;
-
-            --cask-package-names)
-                shift
-
-                if [[ "${#}" -gt '0' ]]
-                then
-                    local caskPackageNames="${1}"
-                fi
-
                 ;;
 
             --package-names)
@@ -167,15 +141,15 @@ function main()
     checkRequireMacSystem
     checkRequireNonRootUser
 
-    if [[ "$(isEmptyString "${caskPackageNames}")" = 'true' && "$(isEmptyString "${packageNames}")" = 'true' ]]
+    if [[ "$(isEmptyString "${packageNames}")" = 'true' ]]
     then
-        fatal '\nFATAL : undefined cask package names and package names'
+        fatal '\nFATAL : undefined package names'
     fi
 
     # Install
 
     installDependencies
-    install "${caskPackageNames}" "${packageNames}"
+    install "${packageNames}"
     postUpMessage
 }
 
