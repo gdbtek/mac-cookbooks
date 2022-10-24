@@ -63,7 +63,6 @@ function installBrewPackage()
 
         # Install
 
-        export HOMEBREW_NO_ENV_HINTS=TRUE
         export HOMEBREW_NO_INSTALL_CLEANUP=FALSE
 
         header "INSTALLING BREW PACKAGE ${packageNameForHeader}"
