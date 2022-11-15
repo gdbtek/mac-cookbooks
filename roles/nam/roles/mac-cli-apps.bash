@@ -5,9 +5,9 @@ function main()
     # Packages
 
     local -r packageNames=(
-        'chef-workstation'
         'awscli'
         'ccat'
+        'chef-workstation'
         'coreutils'
         'dialog'
         'gawk'
@@ -24,6 +24,7 @@ function main()
         'terraform'
         'tree'
         'wget'
+        'xq'
         'yq'
         # 'ack'
         # 'akamai'
