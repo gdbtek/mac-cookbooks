@@ -23,6 +23,7 @@ function main()
         'pcre'
         'terraform'
         'tree'
+        'vault'
         'wget'
         'xq'
         'yq'
@@ -56,7 +57,6 @@ function main()
         # 'testssl'
         # 'tldr'
         # 'tmux'
-        # 'vault'
         # 'watch'
         # 'whatmask'
     )
