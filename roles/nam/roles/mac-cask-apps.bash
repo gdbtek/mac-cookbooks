@@ -6,7 +6,7 @@ function main()
 
     local -r caskPackageNames=(
         '1password'
-        'Docker'
+        'docker'
         'dropbox'
         'google-chrome'
         'messenger'
