@@ -13,7 +13,7 @@ function main()
         'gawk'
         'go'
         'jq'
-        'kubernetes-cli'
+        'kubectl'
         'maven'
         'minikube'
         'moreutils'
