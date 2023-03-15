@@ -8,6 +8,7 @@ function main()
         '1password'
         'dropbox'
         'google-chrome'
+        'messenger'
         'microsoft-teams'
         'sourcetree'
         'visual-studio-code'

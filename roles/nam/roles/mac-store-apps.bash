@@ -8,7 +8,6 @@ function main()
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
         'Magnet'
-        'Messenger'
         'Microsoft Outlook'
         'Slack'
         'SnippetsLab'
