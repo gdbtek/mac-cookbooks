@@ -9,6 +9,7 @@ function main()
         'CopyClip 2 - Clipboard Manager'
         'Magnet'
         'Microsoft Outlook'
+        'Page Screenshot for Safari'
         'Slack'
         'SnippetsLab'
         # 'Final Cut Pro'
