@@ -7,8 +7,8 @@ function main()
     local -r packageNames=(
         '1password'
         'dropbox'
-        'google-backup-and-sync'
         'google-chrome'
+        'google-drive'
         'microsoft-teams'
         'sourcetree'
         'visual-studio-code'
