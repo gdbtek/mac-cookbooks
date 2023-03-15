@@ -8,12 +8,12 @@ function main()
         '1password'
         'dropbox'
         'google-chrome'
-        'google-drive'
         'microsoft-teams'
         'sourcetree'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
         # 'beyond-compare'
+        # 'google-drive'
         # 'transmit'
         # 'vmware-fusion'
     )
