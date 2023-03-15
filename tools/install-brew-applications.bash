@@ -72,7 +72,7 @@ function installBrewPackage()
 
         if [[ "${packageType}" = 'cask' ]]
         then
-            header "INSTALLING BREW CASK PACKAGE ${packageNameForHeader}"
+            header "INSTALLING CASK PACKAGE ${packageNameForHeader}"
 
             brew reinstall --"${packageType}" --force "${packageName}" || brew install --"${packageType}" --force "${packageName}"
             displayVersion "$(brew list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
