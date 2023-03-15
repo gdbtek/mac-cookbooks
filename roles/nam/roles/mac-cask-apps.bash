@@ -4,7 +4,7 @@ function main()
 {
     # Packages
 
-    local -r packageNames=(
+    local -r caskPackageNames=(
         '1password'
         'dropbox'
         'google-chrome'
@@ -23,7 +23,7 @@ function main()
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
-        --package-names "$(arrayToString "${packageNames[@]}")"
+        --cask-package-names "$(arrayToString "${caskPackageNames[@]}")"
 }
 
 main "${@}"
