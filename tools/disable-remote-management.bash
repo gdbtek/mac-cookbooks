@@ -7,11 +7,12 @@ function main()
     # Validations
 
     checkRequireMacSystem
+    checkRequireRootUser
 
     # Disable Remote Management
 
     header 'DISABLING REMOTE MANAGEMENT'
-    sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+    /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
 }
 
 main "${@}"
