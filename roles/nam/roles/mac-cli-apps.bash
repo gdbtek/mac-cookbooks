@@ -16,6 +16,7 @@ function main()
         'kubernetes-cli'
         'maven'
         'minikube'
+        'mongosh'
         'moreutils'
         'netcat'
         'openjdk'
