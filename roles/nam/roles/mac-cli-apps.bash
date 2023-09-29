@@ -6,6 +6,7 @@ function main()
 
     local -r packageNames=(
         'awscli'
+        'az'
         'ccat'
         'chef-workstation'
         'coreutils'
