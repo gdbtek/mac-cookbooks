@@ -13,9 +13,9 @@ function main()
 
     header 'CLEANING UP BREW'
 
-    brew cleanup
-    initializeFolder "$(brew --cache)"
-    brew doctor || true
+    '/opt/homebrew/bin/brew' cleanup
+    initializeFolder "$('/opt/homebrew/bin/brew' --cache)"
+    '/opt/homebrew/bin/brew' doctor || true
 }
 
 main "${@}"
