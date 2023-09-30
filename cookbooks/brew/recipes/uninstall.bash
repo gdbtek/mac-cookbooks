@@ -14,6 +14,7 @@ function uninstall()
     rm -f -r \
         '/opt/chef-workstation' \
         '/opt/chef' \
+        '/opt/homebrew' \
         '/opt/inspec' \
         '/usr/local/.com.apple.installer.keep' \
         '/usr/local/bin' \
