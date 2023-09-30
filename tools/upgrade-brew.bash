@@ -13,9 +13,9 @@ function main()
 
     header 'UPGRADING BREW'
 
-    brew update
-    brew upgrade
-    brew upgrade --cask
+    '/opt/homebrew/bin/brew' update
+    '/opt/homebrew/bin/brew' upgrade
+    '/opt/homebrew/bin/brew' upgrade --cask
 
     # Clean Up Brew
 
