@@ -7,7 +7,16 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
+    # Mac M1
+
     local -r openJDKHomeFolderPath='/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home'
+
+    # Mac Intel
+
+    if [[ ! -d "${openJDKHomeFolderPath}" ]]
+    then
+        local -r openJDKHomeFolderPath='/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home'
+    fi
 
     checkExistFolder "${openJDKHomeFolderPath}"
 
