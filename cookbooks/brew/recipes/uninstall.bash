@@ -11,11 +11,9 @@ function uninstall()
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)" || true
     fi
 
+    # Mac Intel
+
     rm -f -r \
-        '/opt/chef-workstation' \
-        '/opt/chef' \
-        '/opt/homebrew' \
-        '/opt/inspec' \
         '/usr/local/.com.apple.installer.keep' \
         '/usr/local/bin' \
         '/usr/local/Caskroom' \
@@ -29,6 +27,18 @@ function uninstall()
         '/usr/local/sbin' \
         '/usr/local/share' \
         '/usr/local/var'
+
+    # Mac M1
+
+    rm -f -r \
+        '/opt/homebrew'
+
+    # Others
+
+    rm -f -r \
+        '/opt/chef-workstation' \
+        '/opt/chef' \
+        '/opt/inspec'
 
     info "\n$(ls -a -l '/usr/local')"
     info "\n$(ls -a -l '/opt')"
