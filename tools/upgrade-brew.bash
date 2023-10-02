@@ -13,9 +13,14 @@ function main()
 
     header 'UPGRADING BREW'
 
-    '/opt/homebrew/bin/brew' update
-    '/opt/homebrew/bin/brew' upgrade
-    '/opt/homebrew/bin/brew' upgrade --cask
+    if [[ "$(existCommand 'brew')" = 'false' ]]
+    then
+        export PATH="/opt/homebrew/bin:${PATH}"
+    fi
+
+    brew update
+    brew upgrade
+    brew upgrade --cask
 
     # Clean Up Brew
 

@@ -70,17 +70,22 @@ function installBrewPackage()
 
         export HOMEBREW_NO_INSTALL_CLEANUP=FALSE
 
+        if [[ "$(existCommand 'brew')" = 'false' ]]
+        then
+            export PATH="/opt/homebrew/bin:${PATH}"
+        fi
+
         if [[ "${packageType}" = 'cask' ]]
         then
             header "INSTALLING CASK ${packageNameForHeader}"
 
-            '/opt/homebrew/bin/brew' reinstall --"${packageType}" --force "${packageName}" || '/opt/homebrew/bin/brew' install --"${packageType}" --force "${packageName}"
-            displayVersion "$('/opt/homebrew/bin/brew' list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
+            brew reinstall --"${packageType}" --force "${packageName}" || brew install --"${packageType}" --force "${packageName}"
+            displayVersion "$(brew list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
         else
             header "INSTALLING BREW ${packageNameForHeader}"
 
-            '/opt/homebrew/bin/brew' reinstall --force "${packageName}" || '/opt/homebrew/bin/brew' install --force "${packageName}"
-            displayVersion "$('/opt/homebrew/bin/brew' list --version "${packageName}")" "${packageNameForHeader}"
+            brew reinstall --force "${packageName}" || brew install --force "${packageName}"
+            displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
         fi
 
         # Post Install

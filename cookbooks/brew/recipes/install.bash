@@ -11,8 +11,13 @@ function install()
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-    initializeFolder "$('/opt/homebrew/bin/brew' --cache)"
-    displayVersion "$('/opt/homebrew/bin/brew' -v)" 'BREW'
+    if [[ "$(existCommand 'brew')" = 'false' ]]
+    then
+        export PATH="/opt/homebrew/bin:${PATH}"
+    fi
+
+    initializeFolder "$(brew --cache)"
+    displayVersion "$(brew -v)" 'BREW'
 }
 
 function main()
