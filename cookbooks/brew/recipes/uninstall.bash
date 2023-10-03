@@ -40,8 +40,8 @@ function uninstall()
         '/opt/chef' \
         '/opt/inspec'
 
-    info "\n$(ls -a -l '/usr/local')"
-    info "\n$(ls -a -l '/opt')"
+    info "\n=> /usr/local\n$(ls -a -l '/usr/local')"
+    info "\n=> /opt/\n$(ls -a -l '/opt')"
 }
 
 function main()
