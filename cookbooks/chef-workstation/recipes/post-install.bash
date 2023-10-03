@@ -7,6 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
+    closeMacApplications '' 'Chef Workstation App'
     sudo sudo rm -f -r '/Applications/Chef Workstation App.app'
 }
 
