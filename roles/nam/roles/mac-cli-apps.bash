@@ -63,7 +63,6 @@ function main()
         # 'whatmask'
     )
 
-    source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/app.bash"
     source "$(dirname "${BASH_SOURCE[0]}")/../../../libraries/util.bash"
 
     # Install Brew
@@ -84,10 +83,6 @@ function main()
     # Install All Available Software Updates
 
     sudo "$(dirname "${BASH_SOURCE[0]}")/../../../tools/update-software.bash"
-
-    # Install VirtualBox Binary Files
-
-    installVirtualBoxUSRLocalBinFiles
 
     # Finish
 
