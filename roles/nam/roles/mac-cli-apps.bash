@@ -6,7 +6,7 @@ function main()
 
     local -r packageNames=(
         'awscli'
-        'az'
+        'azure-cli'
         'ccat'
         'chef-workstation'
         'coreutils'
@@ -32,7 +32,6 @@ function main()
         'yq'
         # 'ack'
         # 'akamai'
-        # 'azure-cli'
         # 'consul'
         # 'cowsay'
         # 'docker-compose'
