@@ -35,6 +35,7 @@ function setupNVRAM()
     local -r option="${2}"
 
     header "${header} NVRAM-AUTOBOOT"
+    info "$(nvram -p)"
     sudo nvram "AutoBoot=${option}"
     info "$(nvram -p)"
 }
