@@ -79,9 +79,13 @@ function main()
 
     if [[ "$(isMachineHardware 'arm64')" = 'true' ]]
     then
-        unzipRemoteFile 'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' '/usr/local/sbin'
+        unzipRemoteFile \
+            'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' \
+            '/usr/local/sbin'
     else
-        unzipRemoteFile 'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' '/usr/local/sbin'
+        unzipRemoteFile \
+            'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' \
+            '/usr/local/sbin'
     fi
 
     info "$(packer --version)"
