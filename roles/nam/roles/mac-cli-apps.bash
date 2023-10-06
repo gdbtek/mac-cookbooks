@@ -75,6 +75,17 @@ function main()
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-brew-applications.bash" \
         --package-names "$(arrayToString "${packageNames[@]}")"
 
+    # Use Older Packer For Chef-Solo
+
+    if [[ "$(isMachineHardware 'arm64')" = 'true' ]]
+    then
+        unzipRemoteFile 'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' '/usr/local/sbin'
+    else
+        unzipRemoteFile 'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' '/usr/local/sbin'
+    fi
+
+    info "$(packer --version)"
+
     # Install Command Line Tools
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-command-line-tools.bash"
