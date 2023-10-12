@@ -77,6 +77,8 @@ function main()
 
     # Use Older Packer For Chef-Solo
 
+    header 'INSTALLING OLDER PACKER FOR CHEF-SOLO'
+
     if [[ "$(isMachineHardware 'arm64')" = 'true' ]]
     then
         unzipRemoteFile \
@@ -88,7 +90,7 @@ function main()
             "$(getCurrentUserHomeFolder)/Downloads"
     fi
 
-    sudo mv "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
+    sudo mv "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin/packer'
 
     info "$(packer --version)"
 
