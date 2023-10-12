@@ -81,12 +81,14 @@ function main()
     then
         unzipRemoteFile \
             'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' \
-            '/usr/local/sbin'
+            "$(getCurrentUserHomeFolder)/Downloads"
     else
         unzipRemoteFile \
             'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' \
-            '/usr/local/sbin'
+            "$(getCurrentUserHomeFolder)/Downloads"
     fi
+
+    sudo mv "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
 
     info "$(packer --version)"
 
