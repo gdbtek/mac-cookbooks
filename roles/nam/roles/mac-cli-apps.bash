@@ -91,7 +91,7 @@ function main()
     fi
 
     sudo mkdir -p '/usr/local/sbin'
-    sudo mv "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
+    sudo mv -f "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
 
     info "$(packer --version)"
 
