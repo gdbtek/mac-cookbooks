@@ -90,7 +90,7 @@ function main()
             "$(getCurrentUserHomeFolder)/Downloads"
     fi
 
-    sudo mkdir '/usr/local/sbin'
+    sudo mkdir -p '/usr/local/sbin'
     sudo mv "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
 
     info "$(packer --version)"
