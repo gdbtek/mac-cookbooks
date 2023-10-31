@@ -25,6 +25,7 @@ function main()
         'openjdk'
         'p7zip'
         'pcre'
+        'speedtest-cli'
         'terraform'
         'tree'
         'wget'
