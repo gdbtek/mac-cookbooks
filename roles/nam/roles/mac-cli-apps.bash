@@ -10,6 +10,7 @@ function main()
         'ccat'
         'chef-workstation'
         'coreutils'
+        'defaultbrowser'
         'dialog'
         'gawk'
         'go'
