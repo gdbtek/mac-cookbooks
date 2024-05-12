@@ -29,6 +29,7 @@ function main()
         'tree'
         'wget'
         'xq'
+        'yamlfmt'
         'yq'
         # 'ack'
         # 'akamai'
