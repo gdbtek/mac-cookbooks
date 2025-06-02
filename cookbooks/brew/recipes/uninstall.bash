@@ -18,7 +18,6 @@ function uninstall()
         '/usr/local/bin' \
         '/usr/local/Caskroom' \
         '/usr/local/Cellar' \
-        '/usr/local/etc' \
         '/usr/local/Frameworks' \
         '/usr/local/Homebrew' \
         '/usr/local/include' \
@@ -27,6 +26,8 @@ function uninstall()
         '/usr/local/sbin' \
         '/usr/local/share' \
         '/usr/local/var'
+
+    rm -f -r '/usr/local/etc' || true
 
     # Mac M1
 
