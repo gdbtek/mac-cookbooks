@@ -68,7 +68,7 @@ function installBrewPackage()
 
         # Install
 
-        export HOMEBREW_NO_INSTALL_CLEANUP=FALSE
+        export HOMEBREW_NO_INSTALL_CLEANUP=''
 
         if [[ "$(existCommand 'brew')" = 'false' ]]
         then
