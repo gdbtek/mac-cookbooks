@@ -43,6 +43,8 @@ function installBrewPackage()
     local -r packageType="${1}"
     local -r packageNames="${2}"
 
+    export HOMEBREW_NO_INSTALL_CLEANUP=''
+
     # Get App Name List
 
     local packageNameList=()
@@ -67,8 +69,6 @@ function installBrewPackage()
         fi
 
         # Install
-
-        export HOMEBREW_NO_INSTALL_CLEANUP=''
 
         if [[ "$(existCommand 'brew')" = 'false' ]]
         then
