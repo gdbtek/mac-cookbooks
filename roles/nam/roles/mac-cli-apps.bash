@@ -16,6 +16,7 @@ function main()
         'go'
         'hashicorp/tap/vault'
         'jq'
+        'kubelogin'
         'kubernetes-cli'
         'maven'
         'minikube'
