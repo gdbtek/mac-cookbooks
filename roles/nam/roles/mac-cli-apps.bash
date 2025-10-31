@@ -14,6 +14,7 @@ function main()
         'defaultbrowser'
         'dialog'
         'gawk'
+        'git-lfs'
         'go'
         'hashicorp/tap/vault'
         'jq'
