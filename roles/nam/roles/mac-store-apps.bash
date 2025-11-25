@@ -7,16 +7,16 @@ function main()
     local -r storeAppNames=(
         'Amphetamine'
         'CopyClip 2 - Clipboard Manager'
-        'Magnet'
         'Microsoft Outlook'
-        'Page Screenshot for Safari'
         'Slack'
         'SnippetsLab'
         # 'Final Cut Pro'
+        # 'Magnet'
         # 'Microsoft Excel'
         # 'Microsoft Remote Desktop 10'
         # 'Microsoft Word'
         # 'Numbers'
+        # 'Page Screenshot for Safari'
         # 'Pages'
     )
 
