@@ -42,7 +42,6 @@ function main()
         'speedtest-cli'
         'stunnel'
         'testssl'
-        'tldr'
         'tmux'
         'tree'
         'watch'
