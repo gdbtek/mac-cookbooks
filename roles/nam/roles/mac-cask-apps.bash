@@ -11,11 +11,11 @@ function main()
         'google-chrome'
         'messenger'
         'microsoft-teams'
-        'sourcetree'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
         # 'beyond-compare'
         # 'google-drive'
+        # 'sourcetree'
         # 'transmit'
         # 'vmware-fusion'
     )
