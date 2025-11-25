@@ -18,8 +18,6 @@ function main()
         'git-lfs'
         'glances'
         'go'
-        'hashicorp/tap/consul'
-        'hashicorp/tap/nomad'
         'hashicorp/tap/packer'
         'hashicorp/tap/terraform'
         'hashicorp/tap/vault'
