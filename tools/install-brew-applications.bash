@@ -54,10 +54,13 @@ function installBrewPackage()
 
     # Each Package Name
 
-    local packageName=''
+    local i=0
 
-    for packageName in "${packageNameList[@]}"
+    for ((i = 0; i < ${#packageNameList[@]}; i = i + 1))
     do
+        local orderStatus="($((i + 1))/${#packageNameList[@]})"
+        local packageName="${packageNameList[${i}]}"
+
         local packageNameForHeader=''
         packageNameForHeader="$(tr '[:lower:]' '[:upper:]' <<< "${packageName}")"
 
@@ -65,7 +68,7 @@ function installBrewPackage()
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash" ]]
         then
-            header "PRE-INSTALLING PACKAGE ${packageNameForHeader}"
+            header "PRE-INSTALLING PACKAGE ${packageNameForHeader} ${orderStatus}"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/pre-install.bash"
         fi
 
@@ -80,18 +83,18 @@ function installBrewPackage()
 
         if [[ "${tap}" != '.' ]]
         then
-            header "TAPPING ${tap}"
+            header "TAPPING ${tap} ${orderStatus}"
             brew tap "${tap}"
         fi
 
         if [[ "${packageType}" = 'cask' ]]
         then
-            header "INSTALLING CASK ${packageNameForHeader}"
+            header "INSTALLING CASK ${packageNameForHeader} ${orderStatus}"
 
             brew reinstall --"${packageType}" --force "${packageName}" || brew install --"${packageType}" --force "${packageName}"
             displayVersion "$(brew list --version "${packageName}" --"${packageType}")" "${packageNameForHeader}"
         else
-            header "INSTALLING BREW ${packageNameForHeader}"
+            header "INSTALLING BREW ${packageNameForHeader} ${orderStatus}"
 
             brew reinstall --force "${packageName}" || brew install --force "${packageName}"
             displayVersion "$(brew list --version "${packageName}")" "${packageNameForHeader}"
@@ -101,7 +104,7 @@ function installBrewPackage()
 
         if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash" ]]
         then
-            header "POST-INSTALLING PACKAGE ${packageNameForHeader}"
+            header "POST-INSTALLING PACKAGE ${packageNameForHeader} ${orderStatus}"
             sudo "$(dirname "${BASH_SOURCE[0]}")/../cookbooks/${packageName}/recipes/post-install.bash"
         fi
     done
