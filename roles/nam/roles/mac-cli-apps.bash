@@ -7,7 +7,6 @@ function main()
     local -r packageNames=(
         'awscli'
         'azure-cli'
-        'Azure/kubelogin/kubelogin'
         'ccat'
         'chef-workstation'
         'coreutils'
@@ -18,6 +17,7 @@ function main()
         'go'
         'hashicorp/tap/vault'
         'jq'
+        'kubelogin'
         'kubernetes-cli'
         'maven'
         'minikube'
