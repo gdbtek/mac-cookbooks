@@ -8,7 +8,6 @@ function main()
     checkRequireRootUser
 
     git lfs install
-    info "$(cat "$(getCurrentUserHomeFolder)/.gitconfig")"
 }
 
 main "${@}"
