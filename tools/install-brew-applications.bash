@@ -83,7 +83,7 @@ function installBrewPackage()
 
         if [[ "${tap}" != '.' ]]
         then
-            header "TAPPING ${tap} ${orderStatus}"
+            header "TAPPING $(tr '[:lower:]' '[:upper:]' <<< "${tap}") ${orderStatus}"
             brew tap "${tap}"
         fi
 
