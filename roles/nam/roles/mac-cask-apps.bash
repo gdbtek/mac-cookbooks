@@ -6,14 +6,13 @@ function main()
 
     local -r caskPackageNames=(
         '1password'
-        'docker'
         'dropbox'
         'google-chrome'
-        'messenger'
         'microsoft-teams'
         'visual-studio-code'
         # 'adobe-acrobat-reader'
         # 'beyond-compare'
+        # 'docker'
         # 'google-drive'
         # 'sourcetree'
         # 'transmit'
