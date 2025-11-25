@@ -76,6 +76,13 @@ function installBrewPackage()
             export PATH="/opt/homebrew/bin:${PATH}"
         fi
 
+        local tap="$(dirname "${packageName}")"
+
+        if [[ "${tap}" = '.' ]]
+        then
+            brew tap "${tap}"
+        fi
+
         if [[ "${packageType}" = 'cask' ]]
         then
             header "INSTALLING CASK ${packageNameForHeader}"
