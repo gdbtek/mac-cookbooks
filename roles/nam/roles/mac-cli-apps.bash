@@ -98,7 +98,7 @@ function main()
     sudo mkdir -p '/usr/local/sbin'
     sudo mv -f "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
 
-    info "$(packer --version)"
+    info "$('/usr/local/sbin/packer' --version)"
 
     # Install Command Line Tools
 
