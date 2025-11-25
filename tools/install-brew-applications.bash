@@ -80,6 +80,7 @@ function installBrewPackage()
 
         if [[ "${tap}" = '.' ]]
         then
+            header "TAPPING ${tap}"
             brew tap "${tap}"
         fi
 
