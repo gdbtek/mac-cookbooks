@@ -8,6 +8,7 @@ function main()
     checkRequireNonRootUser
 
     git lfs install
+    info "$(cat "$(getCurrentUserHomeFolder)/.gitconfig")"
 }
 
 main "${@}"
