@@ -78,7 +78,7 @@ function installBrewPackage()
 
         local tap="$(dirname "${packageName}")"
 
-        if [[ "${tap}" = '.' ]]
+        if [[ "${tap}" != '.' ]]
         then
             header "TAPPING ${tap}"
             brew tap "${tap}"
