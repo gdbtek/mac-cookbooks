@@ -7,7 +7,7 @@ function main()
     checkRequireMacSystem
     checkRequireRootUser
 
-    sudo sudo rm -f -r '/Applications/Chef Workstation App.app'
+    sudo rm -f -r '/Applications/Chef Workstation App.app' "$(getCurrentUserHomeFolder)/Library/LaunchAgents/io.chef.chef-workstation.app.plist"
 }
 
 main "${@}"
