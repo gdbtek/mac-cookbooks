@@ -39,6 +39,7 @@ function main()
         'siege'
         'speedtest-cli'
         'stunnel'
+        'terragrunt'
         'testssl'
         'tmux'
         'tree'
