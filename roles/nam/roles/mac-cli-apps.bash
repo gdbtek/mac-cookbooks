@@ -83,6 +83,9 @@ function main()
 
     info "$('/usr/local/sbin/packer' --version)"
 
+    packer plugins install github.com/hashicorp/amazon
+    packer plugins install github.com/hashicorp/chef
+
     # Install Command Line Tools
 
     "$(dirname "${BASH_SOURCE[0]}")/../../../tools/install-command-line-tools.bash"
