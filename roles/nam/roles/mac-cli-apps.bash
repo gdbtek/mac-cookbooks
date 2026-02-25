@@ -65,26 +65,26 @@ function main()
 
     # Use Older Packer For Chef-Solo
 
-    header 'INSTALLING OLDER PACKER FOR CHEF-SOLO'
+    # header 'INSTALLING OLDER PACKER FOR CHEF-SOLO'
 
-    if [[ "$(isMachineHardware 'arm64')" = 'true' ]]
-    then
-        unzipRemoteFile \
-            'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' \
-            "$(getCurrentUserHomeFolder)/Downloads"
-    else
-        unzipRemoteFile \
-            'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' \
-            "$(getCurrentUserHomeFolder)/Downloads"
-    fi
+    # if [[ "$(isMachineHardware 'arm64')" = 'true' ]]
+    # then
+    #     unzipRemoteFile \
+    #         'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_arm64.zip' \
+    #         "$(getCurrentUserHomeFolder)/Downloads"
+    # else
+    #     unzipRemoteFile \
+    #         'https://releases.hashicorp.com/packer/1.8.7/packer_1.8.7_darwin_amd64.zip' \
+    #         "$(getCurrentUserHomeFolder)/Downloads"
+    # fi
 
-    sudo mkdir -p '/usr/local/sbin'
-    sudo mv -f "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
+    # sudo mkdir -p '/usr/local/sbin'
+    # sudo mv -f "$(getCurrentUserHomeFolder)/Downloads/packer" '/usr/local/sbin'
 
-    info "$('/usr/local/sbin/packer' --version)"
+    # info "$('/usr/local/sbin/packer' --version)"
 
-    packer plugins install github.com/hashicorp/amazon
-    packer plugins install github.com/hashicorp/chef
+    # packer plugins install github.com/hashicorp/amazon
+    # packer plugins install github.com/hashicorp/chef
 
     # Install Command Line Tools
 
