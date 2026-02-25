@@ -20,8 +20,10 @@ function uninstall()
         '/usr/local/Cellar' \
         '/usr/local/Frameworks' \
         '/usr/local/Homebrew' \
+        '/usr/local/hub' \
         '/usr/local/include' \
         '/usr/local/lib' \
+        '/usr/local/munki' \
         '/usr/local/opt' \
         '/usr/local/sbin' \
         '/usr/local/share' \
