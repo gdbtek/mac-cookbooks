@@ -35,6 +35,7 @@ function main()
         'p7zip'
         'pcre'
         'python3'
+        'rename'
         'shellcheck'
         'siege'
         'speedtest-cli'
