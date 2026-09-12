@@ -44,6 +44,7 @@ function main()
         'testssl'
         'tmux'
         'tree'
+        'vsh'
         'watch'
         'wget'
         'xq'
