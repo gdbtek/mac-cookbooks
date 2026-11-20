@@ -14,6 +14,7 @@ function main()
         'docker-compose'
         'docker'
         'gawk'
+        'gh'
         'git-lfs'
         'glances'
         'go'
